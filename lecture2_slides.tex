@@ -1,18 +1,7 @@
-\documentclass{beamer}
-\usepackage{ctex}
-\usepackage[export]{adjustbox}
-\usetheme{focus}
-
-\title{算法分析与设计II}
-\subtitle{2022-2023-2}
-\date{Last Modified: 2023.1.16}
-\institute{\vspace{2em} 数学与计算机学院 \\ 数据科学与大数据技术}
-\titlegraphic{\vspace{5em} \includegraphics[scale=0.3]{fig/jlnu.pdf}}
+\input{0_slides}
 
 \begin{document}
-
 \frame{\titlepage}
-
 \section{2. 基础算法}
 \begin{frame}{2.1 枚举法}
     \begin{block}{枚举法}
@@ -48,7 +37,7 @@
         \end{itemize}
     \end{exampleblock}
     \vfill
-    \includegraphics[scale=0.7]{fig/2-1.png}
+    \includegraphics[width=\textwidth]{fig/2-1.png}
 \end{frame}
 \begin{frame}{2.2 递归法}
     \begin{itemize}
@@ -62,7 +51,7 @@
             \item 递归关系式：确定递归的方式，即原问题是如何分解为子问题的
             \item 递归出口：确定递归到何时终止，即递归的终止（结束、边界）条件
         \end{enumerate}
-        \item 但是，递归方法并不能降低程序的时间复杂度，而且，递归时函数的嵌套调用使用系统堆栈，控制不好会导致\alert{堆栈溢出} (stack overflow)
+        \item 但是，递归方法并不能降低程序的时间复杂度，而且，递归时函数的嵌套调用使用系统堆栈，控制不好会导致\textcolor{red}{堆栈溢出} (stack overflow)
     \end{itemize}
 \end{frame}
 \begin{frame}{2255 -- Tree Recovery (poj.org)}
@@ -95,7 +84,7 @@
         \item 实现：
         \begin{enumerate}
             \item 递归（手写）
-            \item C++ STL中的next\_permutation函数
+            \item C++ STL中的next\_permutation\footnote{\url{https://cplusplus.com/reference/algorithm/next_permutation/}}函数
         \end{enumerate}
     \end{itemize}
 \end{frame}
@@ -114,7 +103,7 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{MapReduce}
-    \includegraphics[scale=0.45]{fig/2-3.png}
+    \includegraphics[width=\textwidth]{fig/2-3.png}
 \end{frame}
 \begin{frame}{2388 -- Who's in the Middle (poj.org)}
     \begin{itemize}
@@ -125,7 +114,7 @@
         \item 分析
         \begin{enumerate}
             \item 如果n个数是有序的，那么第$\frac{n+1}{2}$个数就是所求的中位数
-            \item 在C语言提供了排序函数qsort，C++语言提供了sort， 它们的实现都是基于快速排序
+            \item 在C语言提供了排序函数qsort\footnote{\url{https://cplusplus.com/reference/cstdlib/qsort/}}，C++语言提供了sort\footnote{\url{https://cplusplus.com/reference/algorithm/sort/}}， 它们的实现都是基于快速排序
             \item \textcolor{blue}{快速排序}(Quicksort)，又称\textcolor{blue}{划分交换排序}(partition-exchange sort)，简称\textcolor{blue}{快排}
         \end{enumerate}
     \end{itemize}
@@ -133,7 +122,7 @@
 \begin{frame}{快速排序}
     \begin{columns}
         \column{0.3\textwidth}
-            \includegraphics[scale=0.4]{fig/2-4.png}
+            \includegraphics[width=\textwidth]{fig/2-4.png}
         \column{0.7\textwidth}
         \begin{enumerate}[(1)]
             \item 选取数组a最右边元素作为基准值x，两个指针i和j最初都在序列最左边
@@ -146,10 +135,60 @@
             \pause
         \end{enumerate}
         \begin{itemize}
-            \item 交换过程结束后，两个3改变了之前的顺序，这种情况称为排序的不稳定性，所以这种快速排序算法是不稳定的排序算法
+            \item 交换过程结束后，两个3改变了之前的顺序，这种情况称为排序的不稳定性，所以这种快速排序算法是\textcolor{red}{不稳定}的排序算法
         \end{itemize}
     \end{columns}
 \end{frame}
-
-
+\begin{frame}{2299 -- Ultra-QuickSort (poj.org)}
+    \begin{itemize}
+        \item 通过交换相邻元素进行排序，对于一个给定的无序序列a[1…n]，计算最终完成升序排列需要交换的次数
+    \end{itemize}
+    \vfill
+    \begin{itemize}
+        \item 分析
+        \begin{enumerate}
+            \item \textcolor{blue}{冒泡排序}，所求的交换次数也就是计算无序序列的\textcolor{blue}{逆序对}数目，冒泡排序的时间复杂度是$O(n^2)$
+            \item 求逆序对数目效率更高的方法是利用\textcolor{blue}{归并排序}，可以做到$O(nlogn)$的时间复杂度
+            \item 归并的具体方法是将排好序的两个数组的元素依次比较，将其中较小的依次放入一个辅助数组b中，因为两个数组已经排序，比较的过程直接从左边到最右边即可。最后用b替换原来的a，进行上一层的合并操作
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+\begin{frame}{二分查找}
+    \includegraphics[width=0.6\textwidth,center]{fig/2-5.png}
+\end{frame}
+\begin{frame}{1905 -- Expanding Rods (poj.org)}
+    \begin{itemize}
+        \item 细棒长度$L$，两端固定，加热后膨胀为一段圆弧，长度变为
+        $$L'=(1+n\cdot C)\cdot L$$
+        $n$为变化的温度，$C$为膨胀系数，求细棒中心移动的距离
+    \end{itemize}
+    \vfill
+    \includegraphics[width=0.5\textwidth,center]{fig/2-6.png}
+\end{frame}
+\begin{frame}{1905 -- Expanding Rods (poj.org)}
+    \includegraphics[width=0.5\textwidth,center]{fig/2-6.png}
+    $$R^2=(R-x)^2+(L/2)^2\Rightarrow R=\frac{x^2+(L/2)^2}{2x}$$
+	$$sin⁡θ=\frac{L/2}{R}\Rightarrow θ=sin^{-1}(\frac{L/2}{R})$$
+	\center{代入 $L'=2Rθ$ 可得$x$和$L'$的关系}
+\end{frame}
+\begin{frame}{分查找}
+    \includegraphics[width=\textwidth]{fig/2-7.png}
+    \begin{itemize}
+        \item 由(a)(b)可以看出，f(LT)大于f(RT)时，可以将右侧区间删掉
+        \item 由(c)(d)可以看出，f(LT)小于f(RT)时，可以将左侧区间删掉
+    \end{itemize}
+\end{frame}
+\begin{frame}{2420 -- A Star not a Tree? (poj.org)}
+    \begin{itemize}
+        \item 给出平面上n个点的坐标，找到一点，到这些点的距离和最小
+    \end{itemize}
+    \vfill
+    \begin{itemize}
+        \item 分析
+        \begin{enumerate}
+            \item 所求的就是几何学中的\textcolor{blue}{费马点}，显然几何方法不适用于计算机，在空间范围内搜索该点，可以采用分治策略进行，不断缩小求解空间，直到找到符合精度要求的解
+            \item 本题的坐标空间x和y都在0到10000之间，随着x和y的增加，解并不是单调变化，无法用二分搜索来实现。问题区间不满足单调性，但是符合\textcolor{blue}{凸函数}，的性质，求区间最值可以采用三分的方法
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
 \end{document}

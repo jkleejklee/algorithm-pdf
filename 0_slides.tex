@@ -1,0 +1,30 @@
+\documentclass{beamer}
+\usepackage{ctex}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usetheme{focus}
+
+\definecolor{codegreen}{RGB}{50 200 50}
+\definecolor{codeblue}{RGB}{50 50 200}
+\definecolor{codered}{RGB}{200 50 50}
+
+\title{算法分析与设计II}
+\subtitle{2022-2023-2}
+\date{Last Modified: 2023.1.16}
+\institute{\vspace{2em} 数学与计算机学院 \\ 数据科学与大数据技术}
+\titlegraphic{\vspace{5em} \includegraphics[scale=0.3]{fig/jlnu.pdf}}
+
+\lstset{
+    columns=flexible,       
+    numbers=left,  
+    numberstyle=\footnotesize\color{darkgray},  
+    frame=shadowbox, 
+    rulesepcolor= \color{gray}, 
+    keywordstyle=\color{codeblue},         
+    commentstyle=\color{codegreen},  
+    stringstyle=\color{codered}, 
+    showstringspaces=false,               
+    language=c++                           
+    }
