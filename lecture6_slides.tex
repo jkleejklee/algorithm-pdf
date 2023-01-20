@@ -197,5 +197,135 @@
         \item  本题中给出的星星坐标已经将$y$递增排序，统计每个星星$x$坐标之前有多少个星星即可，也就是每输入一个星星的坐标，level值就是[1…x-1]的累计值
     \end{itemize}
 \end{frame}
-
+\begin{frame}{6.4 二叉搜索树}
+    \begin{itemize}
+        \item  \textcolor{blue}{二叉搜索树}(BST, Binary search tree) 具有如下性质：
+        \begin{enumerate}[(1)]
+            \item root是二叉搜索树的节点，x是root节点的值
+            \item 如果left是root左子树的节点，则left.x≤root.x
+            \item 如果right是root右子树的节点，则right.x≥root.x
+        \end{enumerate}
+        \vfill
+        \item 一般的二叉搜索树在最坏情况下，将长度为n的有序序列插入后，将变成一个长度为n的链表，查找效率降低
+        \vfill
+        \item 为了解决这个问题，产生了各种平衡树 ，常见的有\textcolor{blue}{AVL树} ，\textcolor{blue}{树堆}(Treap)，\textcolor{blue}{伸展树}(Splay tree )，\textcolor{blue}{红黑树}(Red-black tree)等
+    \end{itemize}
+\end{frame}
+\begin{frame}{2418 -- Hardwood Species (poj.org)}
+    \begin{itemize}
+        \item 给出一个单词列表，将这些单词去重之后按字典序排序，并计算出每个单词出现的次数在总单词数中的比例
+        \vfill
+        \item 使用二叉搜索树来存储单词和查找，树中每个节点包含左节点、右节点、单词、单词出现的次数这几个属性
+        \vfill
+        \item C++ STL中的关联容器map\footnote{\url{https://cplusplus.com/reference/map/map/}}就是使用二叉搜索树实现，map内部通过自建一棵红黑树，实现了数据的自动排序和查找
+    \end{itemize}
+\end{frame}
+\begin{frame}{树堆}
+    \begin{itemize}
+        \item  对于二叉搜索树，在插入过程中如果插入的值一直小于或大于上一个值，树会向一个方向伸展，这会造成二叉搜索树不平衡，而降低搜索效率，这时可以使用树堆来解决该问题
+    \end{itemize}
+    \vfill
+    \begin{block}{树堆(Treap)}
+        通过添加一个随机值$r$来解决二叉搜索树不平衡问题，树堆根据$r$值，保持树的节点的层次位置按$r$值单调排列，因为$r$是随机的，树的节点就会保证基本的平衡，$r$值各不相等的情况下，生成的树是唯一的
+    \end{block}
+\end{frame}
+\begin{frame}{树堆}
+    \begin{itemize}
+        \item 树堆的插入、查找和删除等基本操作和普通的二叉搜索树类似，这里关键的操作就是根据$r$进行树的调整
+        \begin{itemize}
+            \item 树的每个节点上方为标识，下方为$r$值(从上到下依次递增)，从左到右节点$a,b,x,c$的$p$值依次递增
+            \item 插入一个新节点$y$，它的$p$值小于根节点$x$，插入$x$左侧，插入以后如左图，整个树的$r$值不符合要求，需要进行旋转操作
+            \item 树堆的调整分为右旋操作和左旋操作，左节点$r$值小于根节点$r$值，执行右旋操作，执行完如右图，树的形态发生了变化，但是$p$值的顺序不变
+        \end{itemize}
+        \includegraphics[width=0.7\textwidth,center]{fig/6-7.png}
+    \end{itemize}
+\end{frame}
+\begin{frame}{3481 -- Double Queue (poj.org)}
+    \begin{itemize}
+        \item  系统为客户服务，每个客户有一个标识$k$，一个优先级$p$。这个系统可以接收的请求和对应的策略如下：
+    \end{itemize}
+    \begin{table}
+        \begin{tabular}{l|l}
+            请求      & 策略                               \\\hline
+			 0         & 停止服务                          \\\hline
+			 1 $k$ $p$ & 添加优先级$p$的客户$k$             \\\hline
+			 2         & 服务优先级最高的客户并移除等待队列 \\\hline
+			 3         & 服务优先级最低的客户并移除等待队列 \\\hline
+        \end{tabular}
+    \end{table}
+\end{frame}
+\begin{frame}{6.5 哈希表}
+    \begin{block}{散列表}
+        散列表(Hash table，也叫哈希表)基本原理是使用一个下标范围比较大的数组$H[1\ldots m]$来存储元素$x$
+    \end{block}    
+    \begin{itemize}
+        \item 设计一个哈希函数，使得每个$x$都与一个函数值$y$(即数组$H$的下标)相对应，然后用$H[y]$指向元素$x$，没有元素指向，则$H[y]=\phi$
+        \item 由于不能够保证每个元素的关键字与函数值是一一对应的，因此很有可能出现如下情况：对于不同的元素$x_1,x_2$，哈希函数计算出了相同的函数值$y$，这就是产生了所谓的\textcolor{red}{“冲突”},换句话说，就是哈希函数同一个$H[y]$指向了不同的元素$x_1,x_2$
+        \item 常用的字符串哈希函数有BKDRHash、PJWHash(ELFHash)、APHash等，效率较高的为BKDRHash函数\footnote{\url{https://byvoid.com/zhs/blog/string-hash-compare/}}
+    \end{itemize}
+\end{frame}
+\begin{frame}{解决冲突}
+\begin{enumerate}
+    \item \textcolor{blue}{链接表}，将相同函数值的所有元素放在一个链表中，$H[y]$指向这个链表
+    \item \textcolor{blue}{开放寻址法}
+    \begin{itemize}
+        \item 最简单的是线性探测再散列技术，即当$H[y]\neq\phi$，说明$H[y]$位置已经存储有元素，依次探测$(y+i)\mod m, i=1,2,3\ldots$，直到找到空的存储单元为止
+        \item 当冲突严重时，扫描到空单元的时间会变长，哈希表越满，这种情况带来时间消耗就会越大，这时通过扩大数组范围$m$可以有效减少查找时间
+        \item 设计一个好的哈希函数是解题的关键，而实际应用中，哈希函数的种类很多，可以应用到多个领域 ，理解哈希函数的作用十分必要
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+\begin{frame}{2503 -- Babelfish (poj.org)}
+    \begin{itemize}
+        \item 给出字典条目分为<英语 外语>，接下来给出外语，在字典中查找对应的英语并输出，如果查不到，输出“eh”
+        \item 采用哈希表解决，将字符串转换成对应的哈希值，这样在查找时会提高效率
+        \item 将外语词条保存到一个哈希表$H$中，英语保存到对应的表$A$中
+        \begin{enumerate}[(1)]
+            \item \textcolor{blue}{向哈希表添加元素}：通过一个字符串哈希函数将外语字符串$x$转化成整数$y$，将$x$保存到$H[y]$中，将$x$对应的英语保存到$A[y]$中。如果冲突，按照线性探测再散列的方法，令$y=y+i(i=1,2,\ldots )$
+            \item \textcolor{blue}{在哈希表中查找元素}：当需要查找外语字符串$x$，先通过哈希函数计算出$x$的哈希值$y$，读出$H[y]$的值，将$H[y]$和$x$比较，如果相等，则对应的$A[y]$就是要求的内容；如果不相等，说明之前$H[y]$发生冲突，存储了其他的字符串的位置，这时需要在$y+i(i=1,2,\ldots )$位置继续查询;$H[y]=\phi$表明没有找到
+        \end{enumerate}
+        \item 越接近单词总量，哈希表剩余的空位置越少，由于查找是到下一个空位置终止，终止前花费的查找时间就会越长
+    \end{itemize}
+\end{frame}
+\begin{frame}{6.6 字符串}
+    \begin{itemize}
+        \item 字符串一个常见的应用就是\textcolor{blue}{模式匹配}问题，比如文本编辑软件中的查找功能，网页搜索，GNU的grep命令等
+        \vfill
+        \item 将字符串扩展到大量的文本，需要更高效的数据结构和算法来实现
+        \vfill
+        \item 除了\textcolor{blue}{Trie树}、\textcolor{blue}{KMP算法}之外，还有\textcolor{blue}{后缀树}(Suffix tree) ，\textcolor{blue}{后缀数组}(Suffix array) ，\textcolor{blue}{Boyer-Moore字符串搜索算法}， 在文本里搜索多个字符串的\textcolor{blue}{Aho-Corasick算法}(AC自动机)等
+    \end{itemize}
+\end{frame}
+\begin{frame}{字典树}
+    \begin{itemize}
+        \item \textcolor{blue}{Trie树}，也称前缀树或字典树
+        \begin{itemize}
+            \item 例如："a", "to", "tea", "ted", "ten", "i", "in", "inn"构成的trie树如图所示。根节点为空字符串， 每个字符串从根节点到对应的叶子节点，每个节点的子孙都有相同的前缀
+            \item trie树使用链表存储，也可以使用二维数组，二维数组在空间上有所浪费，但是建树和查找过程效率很高
+        \end{itemize}
+        \includegraphics[width=0.3\textwidth,center]{fig/6-8.png}
+    \end{itemize}
+\end{frame}
+\begin{frame}{字典树}
+    \begin{itemize}
+        \item 使用二维数组建树后的内容如图所示。数组trie[i,j]中存储的值为字符插入树的顺序pos，从根节点到pos的路径就是pos后面包含字符串的公共前缀； 图中数字上标为数组num[pos]，其值为多少字符串以根到pos为前缀
+    \end{itemize}
+    \includegraphics[width=0.7\textwidth,center]{fig/6-9.png}
+\end{frame}
+\begin{frame}{2001 -- Shortest Prefixes (poj.org)}
+    \begin{itemize}
+        \item A \textcolor{blue}{prefix} of a string is a substring starting at the beginning of the given string. The prefixes of "carbon" are: "c", "ca", "car", "carb", "carbo", and "carbon". Note that the empty string is not considered a prefix in this problem, but every non-empty string is considered to be a prefix of itself.
+        \item In everyday language, we tend to abbreviate words by prefixes. For example, "carbohydrate" is commonly abbreviated by "carb".
+        \item In this problem, given a set of words, you will find for each word the shortest prefix that uniquely identifies the word it represents.
+    \end{itemize}
+\end{frame}
+\begin{frame}{3461 -- Oulipo (poj.org)}
+    \begin{itemize}
+        \item 题意：给出字符串W和T，求W在T中出现的次数
+        \item Knuth-Morris-Pratt字符串查找算法(\textcolor{blue}{KMP算法}) ：基于前缀匹配的方法，可以提高匹配效率
+        \item 如图所示，当P[6]≠S[6]时，可以退回到P[2]继续匹配，用一个数组next记录回退的位置，比如next[6]=2，就可以通过该数组实现回退
+        \item next数组的求法相当于在P数组内部进行字符串的匹配，值就是匹配到的共同前缀长度
+    \end{itemize}
+    \includegraphics[width=0.5\textwidth,center]{fig/6-10.png}
+\end{frame}
 \end{document}
