@@ -9,6 +9,13 @@
 \definecolor{codegreen}{RGB}{50 200 50}
 \definecolor{codeblue}{RGB}{50 50 200}
 \definecolor{codered}{RGB}{200 50 50}
+\tikzset{
+    global scale/.style={scale=#1,every node/.append style={scale=#1}},
+    CC1/.style ={circle,minimum width = 30pt, minimum height =30pt, draw=black},
+    CC2/.style ={circle,minimum width = 30pt, minimum height =30pt, draw=black, fill=blue!20},
+    RA1/.style ={rectangle,minimum width = 30pt, minimum height =20pt, draw=black},
+    RA2/.style ={rectangle,minimum width = 1cm, minimum height = 1cm, draw=black}
+}
 
 \title{算法分析与设计II}
 \subtitle{2022-2023-2}
@@ -29,4 +36,13 @@
     xleftmargin=3em,
     xrightmargin=1em,              
     language=c++                           
+}
+
+\tikzset{
+    CC1/.style ={
+    circle,
+    minimum width = 30pt, 
+    minimum height =30pt, 
+    draw=black
     }
+}

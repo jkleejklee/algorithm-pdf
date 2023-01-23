@@ -55,18 +55,36 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{2255 -- Tree Recovery (poj.org)}
-    \begin{itemize}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{itemize}
         \item 已知二叉树
         \begin{itemize}
             \item 先序遍历为DBACEGF
             \item 中序遍历为ABCDEFG
         \end{itemize}
+        \vfill
         \item 求后序遍历
         \begin{itemize}
             \item ACBFGED
         \end{itemize}
     \end{itemize}
-    \includegraphics[width=0.5\textwidth, right]{fig/2-2.png}
+    \column{0.4\textwidth}
+    \begin{tikzpicture}
+        \node[CC1]{D}
+            child{node[CC1]{B}
+                child{node[CC1]{A}}
+                child{node[CC1]{C}}}
+            child{node[CC1]{E}
+                child[missing]{}
+                child{node[CC1]{G}
+                    child{node[CC1]{F}
+                    child[missing]{}}
+                    child[missing]{}
+                }
+            };
+    \end{tikzpicture}
+    \end{columns}
 \end{frame}
 \begin{frame}{1731 -- Orders (poj.org)}
     \begin{itemize}

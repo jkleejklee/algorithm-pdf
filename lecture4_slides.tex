@@ -17,7 +17,48 @@
 \begin{frame}{解最短路问题}
     \begin{columns}
         \column{0.65\textwidth}
-            \includegraphics[width=\textwidth]{fig/4-1.png}
+        \begin{tikzpicture}[global scale=0.65]
+            \node[CC1] (1) at(0,0){$A$};
+            \node[CC1] (2) at(2,2){$B_1$};
+            \node[CC1] (3) at(2,0){$B_2$};
+            \node[CC1] (4) at(2,-2){$B_3$};
+            \node[CC1] (5) at(5,2){$C_1$};
+            \node[CC1] (6) at(5,0){$C_2$};
+            \node[CC1] (7) at(5,-2){$C_3$};
+            \node[CC1] (8) at(8,1){$D_1$};
+            \node[CC1] (9) at(8,-1){$D_2$};
+            \node[CC1] (10) at(10,0){$E$};
+            \draw (1) --(2) node[very near start,sloped,above]{2};
+            \draw (1) --(3) node[very near start,sloped,above]{5};
+            \draw (1) --(4) node[very near start,sloped,above]{1};
+            \draw (2) --(5) node[very near start,sloped,above]{12};
+            \draw (2) --(6) node[very near start,sloped,above]{14};
+            \draw (2) --(7) node[very near start,sloped,above]{10};
+            \draw (3) --(5) node[very near start,sloped,above]{6};
+            \draw (3) --(6) node[very near start,sloped,above]{10};
+            \draw (3) --(7) node[very near start,sloped,above]{4};
+            \draw (4) --(5) node[very near start,sloped,above]{13};
+            \draw (4) --(6) node[very near start,sloped,above]{12};
+            \draw (4) --(7) node[very near start,sloped,above]{11};
+            \draw (5) --(8) node[very near start,sloped,above]{3};
+            \draw (5) --(9) node[very near start,sloped,above]{9};
+            \draw (6) --(8) node[very near start,sloped,above]{6};
+            \draw (6) --(9) node[very near start,sloped,above]{5};
+            \draw (7) --(8) node[very near start,sloped,above]{8};
+            \draw (7) --(9) node[very near start,sloped,above]{10};
+            \draw (8) --(10) node[very near start,sloped,above]{5};
+            \draw (9) --(10) node[very near start,sloped,above]{2};
+            
+            \node[RA1] (a) at(0,-3.5) {状态1};
+            \node[RA1] (b) at(2,-3.5) {状态2};
+            \node[RA1] (c) at(5,-3.5) {状态3};
+            \node[RA1] (d) at(8,-3.5) {状态4};
+            \node[RA1] (e) at(10,-3.5) {状态5};
+            \draw[->] (a)--(b) node[midway,above]{$k_1$};
+            \draw[->] (b)--(c) node[midway,above]{$k_2$};
+            \draw[->] (c)--(d) node[midway,above]{$k_3$};
+            \draw[->] (d)--(e) node[midway,above]{$k_4$};
+        \end{tikzpicture}
         \column{0.35\textwidth}
             \begin{enumerate}[(1)]
                 \scriptsize{\item 阶段(stage): $k$}
@@ -49,7 +90,48 @@
 \begin{frame}{解最短路问题}
     \begin{columns}
         \column{0.65\textwidth}
-            \includegraphics[width=\textwidth]{fig/4-1.png}
+        \begin{tikzpicture}[global scale=0.65]
+            \node[CC1] (1) at(0,0){$A$};
+            \node[CC1] (2) at(2,2){$B_1$};
+            \node[CC1] (3) at(2,0){$B_2$};
+            \node[CC1] (4) at(2,-2){$B_3$};
+            \node[CC1] (5) at(5,2){$C_1$};
+            \node[CC1] (6) at(5,0){$C_2$};
+            \node[CC1] (7) at(5,-2){$C_3$};
+            \node[CC1] (8) at(8,1){$D_1$};
+            \node[CC1] (9) at(8,-1){$D_2$};
+            \node[CC1] (10) at(10,0){$E$};
+            \draw (1) --(2) node[very near start,sloped,above]{2};
+            \draw (1) --(3) node[very near start,sloped,above]{5};
+            \draw (1) --(4) node[very near start,sloped,above]{1};
+            \draw (2) --(5) node[very near start,sloped,above]{12};
+            \draw (2) --(6) node[very near start,sloped,above]{14};
+            \draw (2) --(7) node[very near start,sloped,above]{10};
+            \draw (3) --(5) node[very near start,sloped,above]{6};
+            \draw (3) --(6) node[very near start,sloped,above]{10};
+            \draw (3) --(7) node[very near start,sloped,above]{4};
+            \draw (4) --(5) node[very near start,sloped,above]{13};
+            \draw (4) --(6) node[very near start,sloped,above]{12};
+            \draw (4) --(7) node[very near start,sloped,above]{11};
+            \draw (5) --(8) node[very near start,sloped,above]{3};
+            \draw (5) --(9) node[very near start,sloped,above]{9};
+            \draw (6) --(8) node[very near start,sloped,above]{6};
+            \draw (6) --(9) node[very near start,sloped,above]{5};
+            \draw (7) --(8) node[very near start,sloped,above]{8};
+            \draw (7) --(9) node[very near start,sloped,above]{10};
+            \draw (8) --(10) node[very near start,sloped,above]{5};
+            \draw (9) --(10) node[very near start,sloped,above]{2};
+            
+            \node[RA1] (a) at(0,-3.5) {状态1};
+            \node[RA1] (b) at(2,-3.5) {状态2};
+            \node[RA1] (c) at(5,-3.5) {状态3};
+            \node[RA1] (d) at(8,-3.5) {状态4};
+            \node[RA1] (e) at(10,-3.5) {状态5};
+            \draw[->] (a)--(b) node[midway,above]{$k_1$};
+            \draw[->] (b)--(c) node[midway,above]{$k_2$};
+            \draw[->] (c)--(d) node[midway,above]{$k_3$};
+            \draw[->] (d)--(e) node[midway,above]{$k_4$};
+        \end{tikzpicture}
         \column{0.35\textwidth}
             \begin{enumerate}[(4)]
                 \scriptsize{\item 策略(policy)和子策略(subpolicy)}
@@ -72,7 +154,48 @@
 \begin{frame}{解最短路问题}
     \begin{columns}
         \column{0.65\textwidth}
-            \includegraphics[width=\textwidth]{fig/4-1.png}
+        \begin{tikzpicture}[global scale=0.65]
+            \node[CC1] (1) at(0,0){$A$};
+            \node[CC1] (2) at(2,2){$B_1$};
+            \node[CC1] (3) at(2,0){$B_2$};
+            \node[CC1] (4) at(2,-2){$B_3$};
+            \node[CC1] (5) at(5,2){$C_1$};
+            \node[CC1] (6) at(5,0){$C_2$};
+            \node[CC1] (7) at(5,-2){$C_3$};
+            \node[CC1] (8) at(8,1){$D_1$};
+            \node[CC1] (9) at(8,-1){$D_2$};
+            \node[CC1] (10) at(10,0){$E$};
+            \draw (1) --(2) node[very near start,sloped,above]{2};
+            \draw (1) --(3) node[very near start,sloped,above]{5};
+            \draw (1) --(4) node[very near start,sloped,above]{1};
+            \draw (2) --(5) node[very near start,sloped,above]{12};
+            \draw (2) --(6) node[very near start,sloped,above]{14};
+            \draw (2) --(7) node[very near start,sloped,above]{10};
+            \draw (3) --(5) node[very near start,sloped,above]{6};
+            \draw (3) --(6) node[very near start,sloped,above]{10};
+            \draw (3) --(7) node[very near start,sloped,above]{4};
+            \draw (4) --(5) node[very near start,sloped,above]{13};
+            \draw (4) --(6) node[very near start,sloped,above]{12};
+            \draw (4) --(7) node[very near start,sloped,above]{11};
+            \draw (5) --(8) node[very near start,sloped,above]{3};
+            \draw (5) --(9) node[very near start,sloped,above]{9};
+            \draw (6) --(8) node[very near start,sloped,above]{6};
+            \draw (6) --(9) node[very near start,sloped,above]{5};
+            \draw (7) --(8) node[very near start,sloped,above]{8};
+            \draw (7) --(9) node[very near start,sloped,above]{10};
+            \draw (8) --(10) node[very near start,sloped,above]{5};
+            \draw (9) --(10) node[very near start,sloped,above]{2};
+            
+            \node[RA1] (a) at(0,-3.5) {状态1};
+            \node[RA1] (b) at(2,-3.5) {状态2};
+            \node[RA1] (c) at(5,-3.5) {状态3};
+            \node[RA1] (d) at(8,-3.5) {状态4};
+            \node[RA1] (e) at(10,-3.5) {状态5};
+            \draw[->] (a)--(b) node[midway,above]{$k_1$};
+            \draw[->] (b)--(c) node[midway,above]{$k_2$};
+            \draw[->] (c)--(d) node[midway,above]{$k_3$};
+            \draw[->] (d)--(e) node[midway,above]{$k_4$};
+        \end{tikzpicture}
         \column{0.35\textwidth}
             \begin{enumerate}[(6)]
                 \scriptsize{\item 目标函数}
@@ -92,51 +215,362 @@
     \end{columns}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp0.png}
+    \begin{tikzpicture}
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC1] (2) at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC1] (5) at(5,2){$C_1$};
+        \node[CC1] (6) at(5,0){$C_2$};
+        \node[CC1] (7) at(5,-2){$C_3$};
+        \node[CC1] (8) at(8,1){$D_1$};
+        \node[CC1] (9) at(8,-1){$D_2$};
+        \node[CC1] (10) at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+    \end{tikzpicture}
+        \vfill
     $$f_k(s_k)=\min \limits_{x_k\in D_k(s_k),k=4,3,2,1} [d_k(s_k,x_k)+f_{k+1}(s_{k+1})]$$
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp1.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC1] (2) at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC1] (5) at(5,2){$C_1$};
+        \node[CC1] (6) at(5,0){$C_2$};
+        \node[CC1] (7) at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC1] (9) at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_4(D_1)=d(D_1\rightarrow E)+f_5(E)=5+0=5$$
 	\center{最优决策：$D_1\rightarrow E$ }
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp2.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC1] (2) at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC1] (5) at(5,2){$C_1$};
+        \node[CC1] (6) at(5,0){$C_2$};
+        \node[CC1] (7) at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_4(D_2)=d(D_2\rightarrow E)+f_5(E)=2+0=5$$
 	\center{最优决策：$D_2\rightarrow E$ }
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp3.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC1] (2) at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC1] (6) at(5,0){$C_2$};
+        \node[CC1] (7) at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_3(C_1)=min \begin{Bmatrix}(C_1,D_1)+f_4(D_1)\\\ (C_1,D_2)+f_4(D_2) \end{Bmatrix} =min \begin{Bmatrix}3+5\\\ 9+2 \end{Bmatrix} =8$$
 	\center{最优决策：$C_1\rightarrow D_1$}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp4.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC1] (2) at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC2] (6)[label=above:$f_3(C_2){=}7$] at(5,0){$C_2$};
+        \node[CC1] (7) at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_3(C_2)=min \begin{Bmatrix}(C_2,D_1)+f_4(D_1)\\\ (C_2,D_2)+f_4(D_2) \end{Bmatrix} =min \begin{Bmatrix}6+5\\\ 5+2 \end{Bmatrix} =7$$
 	\center{最优决策：$C_2\rightarrow D_2$}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp5.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC1] (2) at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC2] (6)[label=above:$f_3(C_2){=}7$] at(5,0){$C_2$};
+        \node[CC2] (7)[label=above:$f_3(C_3){=}12$] at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_3(C_3)=min \begin{Bmatrix}(C_3,D_1)+f_4(D_1)\\\ (C_3,D_2)+f_4(D_2) \end{Bmatrix} =min \begin{Bmatrix}8+5\\\ 10+2 \end{Bmatrix} =12$$
 	\center{最优决策：$C_3\rightarrow D_2$}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp6.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC2] (2)[label=above:$f_2(B_1){=}20$] at(2,2){$B_1$};
+        \node[CC1] (3) at(2,0){$B_2$};
+        \node[CC1] (4) at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC2] (6)[label=above:$f_3(C_2){=}7$] at(5,0){$C_2$};
+        \node[CC2] (7)[label=above:$f_3(C_3){=}12$] at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_2(B_1)=min \begin{Bmatrix}(B_1,C_1)+f_3(C_1)\\\ (B_1,C_2)+f_3(C_2)\\\ (B_1,C_3)+f_3(C_3) \end{Bmatrix} =min \begin{Bmatrix}12+8\\\ 14+7\\\ 10+12 \end{Bmatrix} =20$$
 	\center{最优决策：$B_1\rightarrow C_1$}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp7.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC1] (1) at(0,0){$A$};
+        \node[CC2] (2)[label=above:$f_2(B_1){=}20$] at(2,2){$B_1$};
+        \node[CC2] (3)[label=above:$f_2(B_2){=}14$] at(2,0){$B_2$};
+        \node[CC2] (4)[label=above:$f_2(B_3){=}19$] at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC2] (6)[label=above:$f_3(C_2){=}7$] at(5,0){$C_2$};
+        \node[CC2] (7)[label=above:$f_3(C_3){=}12$] at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_2(B_3)=min \begin{Bmatrix}(B_3,C_1)+f_3(C_1)\\\ (B_3,C_2)+f_3(C_2)\\\ (B_3,C_3)+f_3(C_3) \end{Bmatrix} =min \begin{Bmatrix}13+8\\\ 12+7\\\ 11+12 \end{Bmatrix} =19$$
 	\center{最优决策：$B_3\rightarrow C_2$}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp8.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC2] (1)[label=above:$f_1(A){=}19$] at(0,0){$A$};
+        \node[CC2] (2)[label=above:$f_2(B_1){=}20$] at(2,2){$B_1$};
+        \node[CC2] (3)[label=above:$f_2(B_2){=}14$] at(2,0){$B_2$};
+        \node[CC2] (4)[label=above:$f_2(B_3){=}19$] at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC2] (6)[label=above:$f_3(C_2){=}7$] at(5,0){$C_2$};
+        \node[CC2] (7)[label=above:$f_3(C_3){=}12$] at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5) node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$f_1(A)=min \begin{Bmatrix}(A,B_1)+f_2(B_1)\\\ (A,B_2)+f_2(B_2)\\\ (A,B_3)+f_2(B_3) \end{Bmatrix} =min \begin{Bmatrix}2+21\\\ 5+14\\\ 1+19 \end{Bmatrix} =19$$
 	\center{最优决策：$A\rightarrow B_2$}
 \end{frame}
 \begin{frame}
-    \includegraphics[width=\textwidth]{fig/dp9.png}
+    \begin{tikzpicture}[every label/.style={blue}]
+        \node[CC2] (1)[label=above:$f_1(A){=}19$] at(0,0){$A$};
+        \node[CC2] (2)[label=above:$f_2(B_1){=}20$] at(2,2){$B_1$};
+        \node[CC2] (3)[label=above:$f_2(B_2){=}14$] at(2,0){$B_2$};
+        \node[CC2] (4)[label=above:$f_2(B_3){=}19$] at(2,-2){$B_3$};
+        \node[CC2] (5)[label=above:$f_3(C_1){=}8$] at(5,2){$C_1$};
+        \node[CC2] (6)[label=above:$f_3(C_2){=}7$] at(5,0){$C_2$};
+        \node[CC2] (7)[label=above:$f_3(C_3){=}12$] at(5,-2){$C_3$};
+        \node[CC2] (8)[label=above:$f_4(D_1){=}5$] at(8,1){$D_1$};
+        \node[CC2] (9)[label=above:$f_4(D_2){=}2$] at(8,-1){$D_2$};
+        \node[CC2] (10)[label=above:$f_5(E){=}0$] at(10,0){$E$};
+        \draw (1) --(2) node[very near start,sloped,above]{2};
+        \draw[red,very thick] (1) --(3) node[very near start,sloped,above]{5};
+        \draw (1) --(4) node[very near start,sloped,above]{1};
+        \draw (2) --(5) node[very near start,sloped,above]{12};
+        \draw (2) --(6) node[very near start,sloped,above]{14};
+        \draw (2) --(7) node[very near start,sloped,above]{10};
+        \draw (3) --(5)[red,very thick] node[very near start,sloped,above]{6};
+        \draw (3) --(6) node[very near start,sloped,above]{10};
+        \draw (3) --(7) node[very near start,sloped,above]{4};
+        \draw (4) --(5) node[very near start,sloped,above]{13};
+        \draw (4) --(6) node[very near start,sloped,above]{12};
+        \draw (4) --(7) node[very near start,sloped,above]{11};
+        \draw[red,very thick] (5) --(8) node[very near start,sloped,above]{3};
+        \draw (5) --(9) node[very near start,sloped,above]{9};
+        \draw (6) --(8) node[very near start,sloped,above]{6};
+        \draw (6) --(9) node[very near start,sloped,above]{5};
+        \draw (7) --(8) node[very near start,sloped,above]{8};
+        \draw (7) --(9) node[very near start,sloped,above]{10};
+        \draw[red,very thick] (8) --(10) node[very near start,sloped,above]{5};
+        \draw (9) --(10) node[very near start,sloped,above]{2};
+        \end{tikzpicture}
     $$A\rightarrow B_2\rightarrow C_1 \rightarrow D_1 \rightarrow E$$
 	\center{为$A$到$E$的最短路径，长度19}
 \end{frame}
