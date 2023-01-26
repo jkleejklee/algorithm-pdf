@@ -76,7 +76,16 @@
                 \item right-bottom: (7,1)
             \end{itemize}
             \column{0.4\textwidth}
-            \includegraphics[width=0.7\textwidth]{fig/9-4.png}
+                \begin{tikzpicture}[scale=0.2]
+                    \draw[thick,->] (0,0) -- (13,0);
+                    \node at(13,1){X};
+                    \draw[thick,->] (0,0) -- (0,11);
+                    \node at(1,11){Y};
+                    \node at(0,-1) {(0,0)} ;
+                    \draw[step=1cm,gray,very thin] (0,0) grid (12,10);
+                    \draw[very thick](4,9) -- (11,2);
+                    \draw[very thick](1,5) rectangle (7,1);
+                \end{tikzpicture}
         \end{columns}
     \end{exampleblock}
 \end{frame}

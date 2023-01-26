@@ -204,7 +204,7 @@
         \node[CC1] (1) at(3,2){1}
             edge[->]node[auto,swap] {8}(2)
             edge[->]node[auto,swap] {6}(3)
-            edge[->] node[auto,swap] {4} (4)
+            edge[->]node[auto,swap] {4} (4)
             edge[->]node[auto] {3}(5)
             edge[<-,bend left]node[auto] {5}(5);
     \end{tikzpicture}
@@ -318,10 +318,29 @@
 \end{frame}
 \begin{frame}{1144 -- Network (poj.org)}
     \begin{itemize}
-        \item 电话网络有$n$个连接点，编号从$1$到$n$，每个连接点有一个交换机，两个交换机之间的路线双向的。如果交换机停机会造成某些点不能连通，则称这个交换机为关键节点，求所有关键节点的数量
+        \item 电话网络有$n$个连接点$1$到$n$，每个连接点有一个交换机，两个交换机之间的路线双向的。如果交换机停机会造成某些点不能连通，这个交换机称为关键节点，求所有关键节点的数量
         \begin{exampleblock}{例}
-            \includegraphics[width=0.3\textwidth,center]{fig/8-7.png}
-            \centerline{\scriptsize{(a)图关键节点为5，(b)图关键节点为2、5}}
+            \begin{center}
+                \begin{tikzpicture}
+                    [every node/.style={circle,minimum width=20pt,minimum height=20pt,thick,draw},
+                    edge/.style={thick,draw},global scale=0.7]
+                \node(1) at(0,2){1};
+                \node(2) at(2,2){2};
+                \node(3) at(2,0){3};
+                \node(4) at(0,0){4};
+                \node(5) at(1,1){5}
+                    edge (1) edge (2) edge (3) edge (4);
+                \node(6) at(4,2){1};
+                \node(8) at(8,2){3};
+                \node(7) at(6,2){2}
+                    edge (6) edge (8);
+                \node(9) at(4,0){6};
+                \node(11) at(8,0){4};
+                \node(10) at(6,0){5}
+                    edge (7) edge (11) edge (9);
+                \end{tikzpicture}\\
+                (a)关键节点为5;(b)关键节点为2、5
+            \end{center}
         \end{exampleblock}
         \item 在无向的连通图中，删除一点后使图不再连通，这点就被称为\textcolor{blue}{割点}(vertex separator/vertex cut)
         \item 与割点类似，如果删除一条边使图不再连通，这条边被称为\textcolor{blue}{桥}(Bridge)
