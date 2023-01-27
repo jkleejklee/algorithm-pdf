@@ -27,7 +27,19 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{无向图的连通分量}
-    \includegraphics[width=0.7\textwidth,center]{fig/6-1.png}
+    \begin{tikzpicture}
+        [every node/.style={circle,minimum width=20pt,minimum height=20pt,thick,draw}]
+        \node(a) at(0,0){a};
+        \node(b) at(2,0){b} edge (a);
+        \node(c) at(0,-1){c} edge (a) edge (b);
+        \node(d) at(2,-1){d} edge (b);
+        \node(e) at(4,0){e};
+        \node(f) at(6,0){f} edge (e);
+        \node(g) at(4,-1){g} edge (e);
+        \node(h) at(8,0){h};
+        \node(i) at(8,-1){i} edge (h);
+        \node(j) at(10,0){j};
+    \end{tikzpicture}
     \begin{table}
         \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
             边   & \multicolumn{10}{c}{构成的不相交集合} \\\hline
@@ -123,7 +135,23 @@
     \begin{itemize}
         \item  从树根处依次比较：如果$k$小于等于左子树的$n$，则在左子树中继续查询；如果$k$大于左子树的$n$，则$k=k-n$，在右子树中继续查询；直到找到叶子节点($p=r$)，此时的$p$即为要查询的编号
     \end{itemize}
-    \includegraphics[width=0.8\textwidth,center]{fig/6-4.png}
+    \begin{center}
+        \begin{tikzpicture}
+        [level 1/.style={sibling distance=4cm},
+        level 2/.style={sibling distance=2cm}]
+        \node{[1,5,5]}
+            child{node{[1,3,3]}
+                child{node{[1,2,2]}
+                    child{node{[1,1,1]}}
+                    child{node{[2,2,1]}}}
+                child{node{[3,3,1]}}
+            }
+            child{node{[4,5,2]}
+                child{node{[4,4,1]}}
+                child{node{[5,5,1]}}
+            };
+    \end{tikzpicture}
+    \end{center}
 \end{frame}
 \begin{frame}{6.3 树状数组}
     \begin{itemize}
@@ -134,7 +162,23 @@
             \item C[1]:[1-1],C[2]:[1-2],C[3]:[3-3],C[4]:[1-4],C[5]:[5-5],C[6]:[5-6],...
         \end{itemize}
     \end{itemize}
-    \includegraphics[width=0.7\textwidth,center]{fig/6-5.png}
+    \begin{center}
+        \begin{tikzpicture}[global scale=.7]
+        \draw (1,1.5) rectangle (2,2) node[midway]{$C[1]$};
+        \draw (1,2) rectangle (3,3) node[midway]{$C[2]$};
+        \draw (3,2.5) rectangle (4,3) node[midway]{$C[3]$};
+        \draw (1,3) rectangle (5,5) node[midway]{$C[4]$};
+        \draw (5,3.5) rectangle (6,4) node[midway]{$C[5]$};
+        \draw (5,4) rectangle (7,5) node[midway]{$C[6]$};
+        \draw (7,4.5) rectangle (8,5) node[midway]{$C[7]$};
+        \draw (1,5) rectangle (9,5.5) node[midway]{$C[8]$};
+        \draw (1,1)--(9,1);
+        \foreach \x in {1,...,8}{
+            \draw[dashed] (\x,1)--(\x,1+.5*\x);
+            \node at (\x+.5,.7){\x};}
+        \draw[dashed] (9,1)--(9,5.5);
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 \begin{frame}{树状数组}
     \begin{itemize}
@@ -192,7 +236,17 @@
         \item 一颗星星的level定义为所有$x$和$y$均不大于该星星坐标的星星的总数，如图所示，编号1…5的星星的level分别为0,1,2,1,3
         \item 依次输出level为0…n-1的星星个数，level为0的有1个，level为1的有2个，依次类推，所以输出1,2,1,1,0
     \end{itemize}
-    \includegraphics[width=0.4\textwidth,center]{fig/6-6.png}
+    \usetikzlibrary {shapes.geometric}
+    \begin{center}
+        \begin{tikzpicture}[every node/.style={star,fill=background,draw},global scale=.6]
+        \draw[step=1cm,gray,very thin] (.7,.7) grid (7.3,5.3);
+        \node at (1,1) {1};
+        \node at (5,1) {2};
+        \node at (7,1) {3};
+        \node at (3,3) {4};
+        \node at (5,5) {5};
+    \end{tikzpicture}
+    \end{center}
     \begin{itemize}
         \item  本题中给出的星星坐标已经将$y$递增排序，统计每个星星$x$坐标之前有多少个星星即可，也就是每输入一个星星的坐标，level值就是[1…x-1]的累计值
     \end{itemize}
@@ -234,10 +288,26 @@
         \item 树堆的插入、查找和删除等基本操作和普通的二叉搜索树类似，这里关键的操作就是根据$r$进行树的调整
         \begin{itemize}
             \item 树的每个节点上方为标识，下方为$r$值(从上到下依次递增)，从左到右节点$a,b,x,c$的$p$值依次递增
-            \item 插入一个新节点$y$，它的$p$值小于根节点$x$，插入$x$左侧，插入以后如左图，整个树的$r$值不符合要求，需要进行旋转操作
-            \item 树堆的调整分为右旋操作和左旋操作，左节点$r$值小于根节点$r$值，执行右旋操作，执行完如右图，树的形态发生了变化，但是$p$值的顺序不变
+            \item 插入一个新节点$y$，它的$p$值小于根节点$x$，插入$x$左侧，插入以后如箭头左侧，整个树的$r$值不符合要求，需要进行旋转操作
+            \item 树堆的调整分为右旋操作和左旋操作，左节点$r$值小于根节点$r$值，执行右旋操作，执行完如箭头右侧，树的形态发生了变化，但是$p$值的顺序不变
         \end{itemize}
-        \includegraphics[width=0.7\textwidth,center]{fig/6-7.png}
+        \usetikzlibrary {shapes.multipart}
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle split,fill=background,draw},global scale=.6]
+                \draw[step=1cm,dashed,gray,very thin] (.7,.7) grid (11.3,5.3);
+                \node(a) at (1,2) {$a$ \nodepart{lower} $4$};
+                \node(b) at (3,1) {$b$ \nodepart{lower} $5$};
+                \node(c) at (5,3) {$c$ \nodepart{lower} $3$};
+                \node(x) at (4,5) {$x$ \nodepart{lower} $2$} edge (c);
+                \node(y)[fill=red!20] at (2,4) {$y$ \nodepart{lower} $1$} edge(a) edge(b) edge(x);
+                \node(a1) at (7,2) {$a$ \nodepart{lower} $4$};
+                \node(b1) at (9,1) {$b$ \nodepart{lower} $5$};
+                \node(c1) at (11,3) {$c$ \nodepart{lower} $3$};
+                \node(x1) at (10,4) {$x$ \nodepart{lower} $2$} edge(b1) edge (c1);
+                \node(y1)[fill=blue!20] at (8,5) {$y$ \nodepart{lower} $1$} edge(a1) edge(x1);
+                \draw[very thick,->] (5.5,4) --(6.5,4);
+            \end{tikzpicture}
+        \end{center}
     \end{itemize}
 \end{frame}
 \begin{frame}{3481 -- Double Queue (poj.org)}
