@@ -1,0 +1,20 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}
+[every node/.style={rectangle,minimum width = 30pt, minimum height =20pt,draw},
+level distance= 1cm]
+\node{9}
+    child{node{12}
+        child{node{10}
+            child{node{2} child{node{19}} child{node{7}}}
+            child{node{18} child{node{7}} child{node{10}}}}
+        child{node{6}
+            child{node{18}}
+            child{node{9} child{node{10}} child{node{4}}}}}
+    child{node{15}
+        child{node{6}}
+        child{node{8}
+            child{node{9}}
+            child{node{5} child{node{4}} child{node{16}}}}};
+\end{tikzpicture}
+\end{document}

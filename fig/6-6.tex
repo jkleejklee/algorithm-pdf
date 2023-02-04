@@ -1,0 +1,14 @@
+\input{pre}
+\begin{document}
+\usetikzlibrary {shapes.multipart}
+\begin{tikzpicture}[every node/.style={circle split,fill=background,draw}]
+\draw[step=1cm,dashed,gray,very thin] (.7,.7) grid (11.3,5.3);
+\foreach \x/\y/\text/\r in {1/2/a/4,3/1/b/5,5/3/c/3,4/5/x/2,2/4/y/1,7/2/a/4,9/1/b/5,11/3/c/3,10/4/x/2,8/5/y/1}{
+    \node(\text\x) at (\x,\y) {\text \nodepart{lower} \r};}
+\foreach \u/\v in {a1/y2,b3/y2,x4/y2,x4/c5,a7/y8,x10/y8,x10/b9,x10/c11}{
+    \draw(\u)--(\v);}
+\draw[red!30,very thick] (y2) circle (.6);
+\draw[green!30,very thick] (y8) circle (.6);
+\draw[very thick,->] (5.5,4) --(6.5,4);
+\end{tikzpicture}
+\end{document}

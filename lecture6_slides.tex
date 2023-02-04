@@ -27,30 +27,18 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{无向图的连通分量}
-    \begin{tikzpicture}
-        [every node/.style={circle,minimum width=20pt,minimum height=20pt,thick,draw}]
-        \node(a) at(0,0){a};
-        \node(b) at(2,0){b} edge (a);
-        \node(c) at(0,-1){c} edge (a) edge (b);
-        \node(d) at(2,-1){d} edge (b);
-        \node(e) at(4,0){e};
-        \node(f) at(6,0){f} edge (e);
-        \node(g) at(4,-1){g} edge (e);
-        \node(h) at(8,0){h};
-        \node(i) at(8,-1){i} edge (h);
-        \node(j) at(10,0){j};
-    \end{tikzpicture}
+    \includegraphics[center]{fig/6-1.pdf}
     \begin{table}
         \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
             边   & \multicolumn{10}{c}{构成的不相交集合} \\\hline
-            初始     & \{a\}         & \{b\}   & \{c\}  & \{d\}  & \{e\}     & \{f\}  & \{g\}  & \{h\}   & \{i\}  & \{j\}  \\\hline
-            (b,d)   & \{a\}         & \{b,d\} & \{c\}  & \{d\}  & \{e\}     & \{f\}  & \{g\}  & \{h\}   & \{i\}  & \{j\}   \\\hline
-            (e,g)   & \{a\}         & \{b,d\} & \{c\}  &      & \{e,g\}   & \{f\}  &      & \{h\}   & \{i\}  & \{j\}   \\\hline
-            (a,c)   & \{a,c\}        & \{b,d\} &      &      & \{e,g\}   & \{f\}  &      & \{h\}   & \{i\}  & \{j\}   \\\hline
-            (h,i)   & \{a,c\}        & \{b,d\} &      &      & \{e,g\}   & \{f\}  &      & \{h,i\} &      & \{j\}   \\\hline
-            (a,b)   & \{a,b,c,d\}    &       &      &      & \{e,g\}   & \{f\}  &      & \{h,i\} &      & \{j\}   \\\hline
-            (e,f)   & \{a,b,c,d\}    &       &      &      & \{e,f,g\} &      &      & \{h,i\} &      & \{j\}   \\\hline
-            (b,c)   & \{a,b,c,d\}    &       &      &      & \{e,f,g\} &      &      & \{h,i\} &      & \{j\}   \\\hline
+            初始     &  a          &  b    &  c   &  d   &  e      &  f   &  g   &  h    &  i   &  j   \\\hline
+            (b,d)   &  a          &  b,d  &  c   &  d   &  e      &  f   &  g   &  h    &  i   &  j    \\\hline
+            (e,g)   &  a          &  b,d  &  c   &      &  e,g    &  f   &      &  h    &  i   &  j    \\\hline
+            (a,c)   &  a,c         &  b,d  &      &      &  e,g    &  f   &      &  h    &  i   &  j    \\\hline
+            (h,i)   &  a,c         &  b,d  &      &      &  e,g    &  f   &      &  h,i  &      &  j    \\\hline
+            (a,b)   &  a,b,c,d     &       &      &      &  e,g    &  f   &      &  h,i  &      &  j    \\\hline
+            (e,f)   &  a,b,c,d     &       &      &      &  e,f,g  &      &      &  h,i  &      &  j    \\\hline
+            (b,c)   &  a,b,c,d     &       &      &      &  e,f,g  &      &      &  h,i  &      &  j    \\\hline
         \end{tabular}
     \end{table}
 \end{frame}
@@ -76,29 +64,23 @@
         }
     }
 \end{lstlisting}
-    
-\vspace*{3ex}
+
 \begin{itemize}
     \item \textcolor{blue}{路径压缩}(path compression)
     \begin{itemize}
         \item 每次查找的时候，可以将查找路径上的节点修改成指向根节点，以便下次查找的时候速度更快
         \item 路径压缩的效果如图所示，(a)为压缩前，(b)为压缩后
+        \includegraphics[scale=.8]{fig/6-2.pdf}
     \end{itemize} 
 \end{itemize}
-\begin{columns}
-    \column{0.6\textwidth}
-    \begin{lstlisting}
+\begin{lstlisting}
     int Find(int x)
-    {
-        if(p[x] < 0)
-            return x;
+    {   if(p[x] < 0) return x;
         p[x] = Find(p[x]);
         return p[x];
     }
-    \end{lstlisting}
-    \column{0.4\textwidth}
-    \includegraphics[width=\textwidth,right]{fig/6-2.png}
-\end{columns}
+\end{lstlisting}
+
 \begin{frame}{2524 -- Ubiquitous Religions (poj.org)}
     \begin{itemize}
         \item $n$个学生信仰不同的宗教
@@ -126,7 +108,7 @@
     \begin{itemize}
         \item  $n$头牛编号为$1…n$，打乱顺序排成一列，除去队首的牛之外，给出每头牛在队列中前面编号比它小的牛的数量$k$，求队列中每头牛的编号
     \end{itemize}
-    \includegraphics[width=0.8\textwidth,center]{fig/6-3.png}
+    \includegraphics[width=0.8\textwidth,center]{fig/6-11.pdf}
     \begin{itemize}
         \item  维护一个线段树来解决该问题，创建一个线段树$T$，树中每个节点有3个属性$[p,r,n]$，分别代表线段左端点、线段右端点、左右端点之间节点的数量
     \end{itemize}
@@ -135,23 +117,7 @@
     \begin{itemize}
         \item  从树根处依次比较：如果$k$小于等于左子树的$n$，则在左子树中继续查询；如果$k$大于左子树的$n$，则$k=k-n$，在右子树中继续查询；直到找到叶子节点($p=r$)，此时的$p$即为要查询的编号
     \end{itemize}
-    \begin{center}
-        \begin{tikzpicture}
-        [level 1/.style={sibling distance=4cm},
-        level 2/.style={sibling distance=2cm}]
-        \node{[1,5,5]}
-            child{node{[1,3,3]}
-                child{node{[1,2,2]}
-                    child{node{[1,1,1]}}
-                    child{node{[2,2,1]}}}
-                child{node{[3,3,1]}}
-            }
-            child{node{[4,5,2]}
-                child{node{[4,4,1]}}
-                child{node{[5,5,1]}}
-            };
-    \end{tikzpicture}
-    \end{center}
+    \includegraphics[center]{fig/6-3.pdf}
 \end{frame}
 \begin{frame}{6.3 树状数组}
     \begin{itemize}
@@ -162,23 +128,7 @@
             \item C[1]:[1-1],C[2]:[1-2],C[3]:[3-3],C[4]:[1-4],C[5]:[5-5],C[6]:[5-6],...
         \end{itemize}
     \end{itemize}
-    \begin{center}
-        \begin{tikzpicture}[global scale=.7]
-        \draw (1,1.5) rectangle (2,2) node[midway]{$C[1]$};
-        \draw (1,2) rectangle (3,3) node[midway]{$C[2]$};
-        \draw (3,2.5) rectangle (4,3) node[midway]{$C[3]$};
-        \draw (1,3) rectangle (5,5) node[midway]{$C[4]$};
-        \draw (5,3.5) rectangle (6,4) node[midway]{$C[5]$};
-        \draw (5,4) rectangle (7,5) node[midway]{$C[6]$};
-        \draw (7,4.5) rectangle (8,5) node[midway]{$C[7]$};
-        \draw (1,5) rectangle (9,5.5) node[midway]{$C[8]$};
-        \draw (1,1)--(9,1);
-        \foreach \x in {1,...,8}{
-            \draw[dashed] (\x,1)--(\x,1+.5*\x);
-            \node at (\x+.5,.7){\x};}
-        \draw[dashed] (9,1)--(9,5.5);
-        \end{tikzpicture}
-    \end{center}
+    \includegraphics[scale=.7,center]{fig/6-4.pdf}
 \end{frame}
 \begin{frame}{树状数组}
     \begin{itemize}
@@ -236,17 +186,7 @@
         \item 一颗星星的level定义为所有$x$和$y$均不大于该星星坐标的星星的总数，如图所示，编号1…5的星星的level分别为0,1,2,1,3
         \item 依次输出level为0…n-1的星星个数，level为0的有1个，level为1的有2个，依次类推，所以输出1,2,1,1,0
     \end{itemize}
-    \usetikzlibrary {shapes.geometric}
-    \begin{center}
-        \begin{tikzpicture}[every node/.style={star,fill=background,draw},global scale=.6]
-        \draw[step=1cm,gray,very thin] (.7,.7) grid (7.3,5.3);
-        \node at (1,1) {1};
-        \node at (5,1) {2};
-        \node at (7,1) {3};
-        \node at (3,3) {4};
-        \node at (5,5) {5};
-    \end{tikzpicture}
-    \end{center}
+    \includegraphics[scale=.6,center]{fig/6-5.pdf}
     \begin{itemize}
         \item  本题中给出的星星坐标已经将$y$递增排序，统计每个星星$x$坐标之前有多少个星星即可，也就是每输入一个星星的坐标，level值就是[1…x-1]的累计值
     \end{itemize}
@@ -291,23 +231,7 @@
             \item 插入一个新节点$y$，它的$p$值小于根节点$x$，插入$x$左侧，插入以后如箭头左侧，整个树的$r$值不符合要求，需要进行旋转操作
             \item 树堆的调整分为右旋操作和左旋操作，左节点$r$值小于根节点$r$值，执行右旋操作，执行完如箭头右侧，树的形态发生了变化，但是$p$值的顺序不变
         \end{itemize}
-        \usetikzlibrary {shapes.multipart}
-        \begin{center}
-            \begin{tikzpicture}[every node/.style={circle split,fill=background,draw},global scale=.6]
-                \draw[step=1cm,dashed,gray,very thin] (.7,.7) grid (11.3,5.3);
-                \node(a) at (1,2) {$a$ \nodepart{lower} $4$};
-                \node(b) at (3,1) {$b$ \nodepart{lower} $5$};
-                \node(c) at (5,3) {$c$ \nodepart{lower} $3$};
-                \node(x) at (4,5) {$x$ \nodepart{lower} $2$} edge (c);
-                \node(y)[fill=red!20] at (2,4) {$y$ \nodepart{lower} $1$} edge(a) edge(b) edge(x);
-                \node(a1) at (7,2) {$a$ \nodepart{lower} $4$};
-                \node(b1) at (9,1) {$b$ \nodepart{lower} $5$};
-                \node(c1) at (11,3) {$c$ \nodepart{lower} $3$};
-                \node(x1) at (10,4) {$x$ \nodepart{lower} $2$} edge(b1) edge (c1);
-                \node(y1)[fill=blue!20] at (8,5) {$y$ \nodepart{lower} $1$} edge(a1) edge(x1);
-                \draw[very thick,->] (5.5,4) --(6.5,4);
-            \end{tikzpicture}
-        \end{center}
+        \includegraphics[scale=.6,center]{fig/6-6.pdf}
     \end{itemize}
 \end{frame}
 \begin{frame}{3481 -- Double Queue (poj.org)}
@@ -374,32 +298,13 @@
             \item trie树使用链表存储，也可以使用二维数组，二维数组在空间上有所浪费，但是建树和查找过程效率很高
         \end{itemize}
     \end{itemize}    
-    \begin{center}
-        \begin{tikzpicture}
-        [every node/.style={circle,minimum width=30pt,minimum height=30pt,thick,draw},
-        edge from parent/.style={->,thick,draw},global scale=0.8]
-        \node{}
-        child{node{a}}
-        child{node{i}
-            child{node{n}
-                child{node{n}}
-                child[missing]{}
-                child[missing]{}}
-            child[missing]{}}
-        child{node{t}
-            child{node{e}
-                child{node{a}}
-                child{node{d}}
-                child{node{n}}}
-            child{node{o}}};
-        \end{tikzpicture}  
-    \end{center}
+    \includegraphics[scale=.8,center]{fig/6-7.pdf} 
 \end{frame}
 \begin{frame}{字典树}
     \begin{itemize}
         \item 使用二维数组建树后的内容如图所示。数组trie[i,j]中存储的值为字符插入树的顺序pos，从根节点到pos的路径就是pos后面包含字符串的公共前缀； 图中数字上标为数组num[pos]，其值为多少字符串以根到pos为前缀
     \end{itemize}
-    \includegraphics[width=0.7\textwidth,center]{fig/6-9.png}
+    \includegraphics[scale=0.7,center]{fig/6-8.pdf}
 \end{frame}
 \begin{frame}{2001 -- Shortest Prefixes (poj.org)}
     \begin{itemize}
@@ -415,6 +320,6 @@
         \item 如图所示，当P[6]≠S[6]时，可以退回到P[2]继续匹配，用一个数组next记录回退的位置，比如next[6]=2，就可以通过该数组实现回退
         \item next数组的求法相当于在P数组内部进行字符串的匹配，值就是匹配到的共同前缀长度
     \end{itemize}
-    \includegraphics[width=0.5\textwidth,center]{fig/6-10.png}
+    \includegraphics[scale=.9,center]{fig/6-9.pdf}  
 \end{frame}
 \end{document}

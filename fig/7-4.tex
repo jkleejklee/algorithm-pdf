@@ -1,0 +1,7 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}
+\foreach \a[count=\i] in {P,N,N,N,P,N,N,N,P,N,N}
+    \node[rectangle,minimum width=1cm, minimum height=1cm,draw,label=above:\a] at (\i,0) {\i};    
+\end{tikzpicture}
+\end{document}

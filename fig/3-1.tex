@@ -1,0 +1,9 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}[->,very thick]
+\foreach \x/\y/\text in {0/0/,0/1/,0/2/top,-3/3.4/,3/3.4/}{
+    \node[rectangle,minimum width=3cm,minimum height=.8cm, thin,draw]at(\x,\y){\text};}
+\draw (-1.5,3.4) arc (90:0:1) node[midway,above,sloped]{Push};
+\draw (.5,2.4) arc (180:90:1) node[midway,above,sloped]{Pop};
+\end{tikzpicture}
+\end{document}

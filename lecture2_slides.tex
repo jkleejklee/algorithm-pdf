@@ -37,17 +37,7 @@
         \end{itemize}
     \end{exampleblock}
     \vfill
-    \tdplotsetmaincoords{70}{110}
-    \begin{tikzpicture}[scale=2,tdplot_main_coords]
-        \foreach \i in {0,1,2,3,4}
-        \foreach \j in {0,1}{
-            \draw[fill=white,fill opacity=0.5] (0+\j,0+\i,0) -- (0+\j,1+\i,0) -- (0+\j,1+\i,1) -- (0+\j,0+\i,1) -- cycle;
-            \draw[fill=white,fill opacity=0.5] (0+\j,0+\i,0) -- (1+\j,0+\i,0) -- (1+\j,1+\i,0) -- (0+\j,1+\i,0) -- cycle;
-            \draw[fill=white,fill opacity=0.5] (0+\j,0+\i,0) -- (1+\j,0+\i,0) -- (1+\j,0+\i,1) -- (0+\j,0+\i,1) -- cycle;
-            \draw[fill=white,fill opacity=0.5] (1+\j,0+\i,0) -- (1+\j,1+\i,0) -- (1+\j,1+\i,1) -- (1+\j,0+\i,1) -- cycle;
-            \draw[fill=white,fill opacity=0.5] (0+\j,1+\i,0) -- (1+\j,1+\i,0) -- (1+\j,1+\i,1) -- (0+\j,1+\i,1) -- cycle;
-            \draw[fill=white,fill opacity=0.5] (1+\j,0+\i,1) -- (1+\j,1+\i,1) -- (0+\j,1+\i,1) -- (0+\j,0+\i,1) -- cycle;}
-    \end{tikzpicture}
+    \includegraphics{fig/2-1.pdf}
 \end{frame}
 \begin{frame}{2.2 递归法}
     \begin{itemize}
@@ -66,7 +56,7 @@
 \end{frame}
 \begin{frame}{2255 -- Tree Recovery (poj.org)}
     \begin{columns}
-        \column{0.6\textwidth}
+        \column{0.4\textwidth}
         \begin{itemize}
         \item 已知二叉树
         \begin{itemize}
@@ -79,21 +69,8 @@
             \item ACBFGED
         \end{itemize}
     \end{itemize}
-    \column{0.4\textwidth}
-    \begin{tikzpicture}[every node/.style={circle,minimum width = 30pt, minimum height =30pt, draw}]
-        \node{D}
-            child{node{B}
-                child{node{A}}
-                child{node{C}}}
-            child{node{E}
-                child[missing]{}
-                child{node{G}
-                    child{node{F}
-                    child[missing]{}}
-                    child[missing]{}
-                }
-            };
-    \end{tikzpicture}
+    \column{0.6\textwidth}
+    \includegraphics{fig/2-2.pdf}
     \end{columns}
 \end{frame}
 \begin{frame}{1731 -- Orders (poj.org)}
@@ -131,7 +108,7 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{MapReduce}
-    \includegraphics[width=\textwidth]{fig/2-3.png}
+    \includegraphics[width=\textwidth]{fig/mapreduce.png}
 \end{frame}
 \begin{frame}{2388 -- Who's in the Middle (poj.org)}
     \begin{itemize}
@@ -150,38 +127,7 @@
 \begin{frame}{快速排序}
     \begin{columns}
         \column{0.3\textwidth}
-        \begin{tikzpicture}[global scale=.6]
-            \draw (-1,0) node{(4)};
-            \draw (0,0) node[RA2]{2};
-            \draw (1,0) node[RA2]{1};
-            \draw (2,0) circle(.3) node[RA2]{3};
-            \draw (3,0) node[RA2]{4};
-            \draw (4,0) node[RA2]{3};
-            \draw (2,1) node{i};
-            \draw (-1,2) node{(3)};
-            \draw (0,2) node[RA2]{2};
-            \draw (1,2) node[RA2]{1};
-            \draw (2,2) node[RA2]{3};
-            \draw (3,2) node[RA2]{4};
-            \draw (4,2) circle(.3) node[RA2]{3};
-            \draw (2,3) node{i};
-            \draw (4,3) node{j};
-            \draw (-1,4) node{(2)};
-            \draw (0,4) node[RA2]{2};
-            \draw (1,4) node[RA2]{4};
-            \draw (2,4) node[RA2]{3};
-            \draw (3,4) node[RA2]{1};
-            \draw (4,4) circle(.3) node[RA2]{3};
-            \draw (1,5) node{i};
-            \draw (2,5) node{j};
-            \draw (-1,6) node{(1)};
-            \draw (0,6) node[RA2]{4};
-            \draw (1,6) node[RA2]{2};
-            \draw (2,6) node[RA2]{3};
-            \draw (3,6) node[RA2]{1};
-            \draw (4,6) circle(.3) node[RA2]{3};
-            \draw (0,7) node{ij};
-        \end{tikzpicture}
+        \includegraphics[scale=.6]{fig/2-3.pdf}
         \column{0.7\textwidth}
         \begin{enumerate}[(1)]
             \item 选取数组a最右边元素作为基准值x，两个指针i和j最初都在序列最左边
@@ -209,23 +155,7 @@
     \end{enumerate}
 \end{frame}
 \begin{frame}{二分查找}
-    \begin{tikzpicture}[
-        hv/.style={to path={-| (\tikztotarget)},->,thick},
-        h/.style={dashed,thick}]
-        \draw (1,1) node[RA2]{1};
-        \node[RA2](1) at(2,1) {3};
-        \node[RA2](2) at(3,1) {4};
-        \node[RA2](3) at(4,1) {6};
-        \node[RA2](4) at(5,1) {7};
-        \draw (6,1) node[RA2]{8};
-        \draw (7,1) node[RA2]{10};
-        \draw (8,1) node[RA2]{13};
-        \draw (9,1) node[RA2]{14};
-        \node (5) at (4,2.5) {4<6} edge[hv] (2) edge[h] (3);
-        \node (6) at (2,3.5) {4>3} edge[hv] (5) edge[h] (1);
-        \node (7) at (5,4.5) {4<7} edge[hv] (6) edge[h] (4);
-        \node at (5,5.5) {} edge[hv] (7);
-    \end{tikzpicture}
+    \includegraphics{fig/2-4.pdf}
 \end{frame}
 \begin{frame}{1905 -- Expanding Rods (poj.org)}
     \begin{itemize}
@@ -234,50 +164,16 @@
         $n$为变化的温度，$C$为膨胀系数，求细棒中心移动的距离
     \end{itemize}
     \vfill
-    \begin{center}
-        \begin{tikzpicture}
-        \draw[very thick] (2.12,2.12) arc (45:135:3) node[midway,above]{$L'$};
-        \draw[very thick] (0,3)--(0,0)--(-2.12,2.12)--(2.12,2.12);
-        \draw (0,.4) arc (90:135:.4) node[midway,above]{$\theta$};
-        \node at (.5,1){$R-x$};
-        \node at (.2,2.5){$x$};
-        \node at (-1,2.4){$L/2$};
-        \node at (-1.2,.8){$R$};
-    \end{tikzpicture}
-    \end{center}
+    \includegraphics[center]{fig/2-5.pdf}
 \end{frame}
 \begin{frame}{1905 -- Expanding Rods (poj.org)}
-    \begin{center}
-       \begin{tikzpicture}
-        \draw[very thick] (2.12,2.12) arc (45:135:3) node[midway,above]{$L'$};
-        \draw[very thick] (0,3)--(0,0)--(-2.12,2.12)--(2.12,2.12);
-        \draw (0,.4) arc (90:135:.4) node[midway,above]{$\theta$};
-        \node at (.5,1){$R-x$};
-        \node at (.2,2.5){$x$};
-        \node at (-1,2.4){$L/2$};
-        \node at (-1.2,.8){$R$};
-    \end{tikzpicture} 
-    \end{center}
+    \includegraphics[center]{fig/2-5.pdf}
     $$R^2=(R-x)^2+(L/2)^2\Rightarrow R=\frac{x^2+(L/2)^2}{2x}$$
-	$$sin⁡θ=\frac{L/2}{R}\Rightarrow θ=sin^{-1}(\frac{L/2}{R})$$
+	$$sinθ=\frac{L/2}{R}\Rightarrow θ=sin^{-1}(\frac{L/2}{R})$$
 	\center{代入 $L'=2Rθ$ 可得$x$和$L'$的关系}
 \end{frame}
 \begin{frame}{三分查找}
-    \begin{tikzpicture}
-        \foreach \x in {0,1,2,3}{  
-            \fill   ($(0,0)!\x*.25!(12,0)$) circle (.1) node[below]{$L$}
-                    ($(2.4,0)!\x*.25!(14.4,0)$) circle (.1) node[below]{$R$}
-                    ($(0.8,0)!\x*.25!(12.8,0)!abs(cos(\x*90))*.3+.5!(0.8+3*\x,2)$) circle (.1) node[above]{$LT$}
-                    ($(1.6,0)!\x*.25!(13.6,0)!abs(sin(\x*90))*.3+.5!(1.6+3*\x,2)$) circle (.1) node[above]{$RT$};}
-        \draw (0,0) ..controls (0,3) and (1.6,1.2)..(2.4,0);
-        \draw (5.4,0) ..controls (5.4,3) and (3.8,1.2)..(3,0);
-        \draw (6,0) ..controls (6.8,2.2)..(8.4,0);
-        \draw (11.4,0) ..controls (10.6,2.2)..(9,0);
-        \node at(1.2,-.8) {(a)};
-        \node at(4.2,-.8) {(b)};
-        \node at(7.2,-.8) {(c)};
-        \node at(10.2,-.8) {(d)};
-    \end{tikzpicture}
+    \includegraphics[scale=.8]{fig/2-6.pdf}
     \begin{itemize}
         \item 由(a)(c)可以看出，f(LT)大于f(RT)时，可以将右侧区间删掉
         \item 由(b)(d)可以看出，f(LT)小于f(RT)时，可以将左侧区间删掉

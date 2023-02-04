@@ -1,0 +1,18 @@
+\input{pre}
+\begin{document}
+\usetikzlibrary {arrows.meta,trees}
+\begin{tikzpicture}
+    [parent anchor=east,child anchor=west,grow=east,sibling distance=1cm, level distance=4cm,
+    s/.style={text width=#1},edge from parent/.style={-{Circle[open]},thick,draw}]
+\node [s=3em,font=\Large]{搜索算法分类}
+    child [s=4em]{node {博弈搜索（双人走）}}
+    child [missing] {}
+    child [s=4em]{node {一般搜索（一人走）}
+        child {node[s=8em] {启发式搜索 \\（有信息动态搜索）}}
+        child [missing] {}
+        child {node[s=8em] {盲目搜索 \\ （无信息顺序搜索）}
+        child {node[s=8em] {双向广度优先搜索}}
+        child {node[s=7em] {广度优先搜索}}
+        child {node[s=7em] {深度优先搜索（回溯搜索）}}}};
+\end{tikzpicture}
+\end{document}

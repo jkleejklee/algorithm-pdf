@@ -1,0 +1,13 @@
+\input{pre}
+\begin{document}
+\usetikzlibrary{shapes.callouts}
+\begin{tikzpicture}
+    [note/.style={draw,text width=#1,font=\small,rectangle callout}]
+\draw (0,0)--(4,0)--(2,5) node[above]{$S_0$} --cycle;
+\fill[blue!20] (1,0)--(3,0)--(2,5)--cycle;
+\draw [->,thick,domain=0:5*pi] plot ({(sin(\x r)*\x)/16+2},{5-\x/pi}) node[below]{$S_g$};
+\node [note=3.5em,callout relative pointer={(.5,-1.5)}] at (.5,4) {问题全状态空间};
+\node [note=3.5em,,callout relative pointer={(-1,-1)}] at (3.5,4.5) {搜索空间};
+\node [note=2.6em,,callout relative pointer={(-1,-1)}] at (4,2) {解路径};
+\end{tikzpicture}
+\end{document}

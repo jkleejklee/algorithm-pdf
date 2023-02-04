@@ -1,0 +1,15 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}[sibling distance=2.5cm]
+\node{D}
+    child{node{B}
+        child{node{A}}
+        child{node{C}}}
+    child{node{E}
+        child[missing]{}
+        child{node{G}
+            child{node{F}
+            child[missing]{}}
+            child[missing]{}}};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,16 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}[every node/.style={minimum width=1cm,minimum height=1cm}]
+\draw (.5,.5) rectangle (8.5,8.5);
+\foreach \x in{1,3,5,7}
+\foreach \y in{1,3,5,7}{
+    \node[fill=gray] at(\x,\y){};
+    \node[fill=gray] at(\x+1,\y+1){};}
+\foreach \a[count=\i] in {a,...,h}{
+    \node at (\i,.2){\a};
+    \node at (.2,\i){\i};}  
+\draw [->,thick,green] (1,1)--(3,2)--(2,4)--(4,5)--(5,7)--(3,8)--(2,6)--(1,8);
+\draw [->,thick,blue] (1,1)--(2,3)--(4,4)--(2,5)--(3,7)--(1,8);
+\node at (1,1) {\includegraphics{knight.png}}; 
+\end{tikzpicture}
+\end{document}

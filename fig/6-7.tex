@@ -1,0 +1,21 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}
+[every node/.style={circle,minimum width=20pt,thick,draw},
+edge from parent/.style={->,thick,draw}]
+\node{}
+child{node{a}}
+child{node{i}
+    child{node{n}
+        child{node{n}}
+        child[missing]{}
+        child[missing]{}}
+    child[missing]{}}
+child{node{t}
+    child{node{e}
+        child{node{a}}
+        child{node{d}}
+        child{node{n}}}
+    child{node{o}}};
+\end{tikzpicture} 
+\end{document}

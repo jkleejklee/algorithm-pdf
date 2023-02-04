@@ -11,10 +11,10 @@
         \item 搜索过程实际上是根据初始条件$S_0$和扩展规则构造一棵解答树并寻找符合目标状态$S_g$的节点的过程
         \item \textcolor{blue}{决策树}是机器学习和数据挖掘中一个重要方法
     \end{itemize}
-    \includegraphics[width=0.3\textwidth,center]{fig/7-1.png}
+    \includegraphics[width=0.3\textwidth,center]{fig/7-1.pdf}
 \end{frame}
 \begin{frame}{搜索算法分类}
-    \includegraphics[width=0.9\textwidth,center]{fig/7-2.png}
+    \includegraphics[width=\textwidth]{fig/7-2.pdf}
 \end{frame}
 \begin{frame}{7.1 深度优先搜索}
     \begin{itemize}
@@ -54,9 +54,12 @@
 \begin{frame}{1915 -- Knight Moves (poj.org)}
     \begin{itemize}
         \item \textcolor{blue}{骑士巡逻}(Knight‘s tour)问题
+        \begin{itemize}
+            \item 棋盘大小为$l\times l$，棋盘中的骑士的起始位置a，终止位置b，问从a到b最少需要几步
+        \end{itemize}
     \end{itemize}
     \vfill
-    \includegraphics[width=0.3\textwidth,center]{fig/7-3.png}
+    \includegraphics[scale=.7,center]{fig/7-3.pdf}
 \end{frame}
 \begin{frame}{7.3 启发式搜索}
     \begin{itemize}
@@ -124,12 +127,7 @@
         \item $n=3$时,按照算法，0为结束点，是必败点(P)；1,2,3可以分别通过取1,2,3个纽扣到达0的位置，所以它们是必胜点(N)
         \item $n=4$时,无论取几个纽扣，到达的都是N点，所以4为必败点，依此类推，如图所示
         \vfill
-        \begin{tikzpicture}
-            \foreach \x in {0,1,...,10}
-                \node[RA2] at (\x,0) {\x};
-            \foreach \y[count=\i] in {P,N,N,N,P,N,N,N,P,N,N}
-                \node at (\i-1,-1) {\y};    
-        \end{tikzpicture}
+        \includegraphics[scale=.9]{fig/7-4.pdf}
         \item 不难发现，凡是$n+1$整数倍的位置都是P点，其他位置是N点,第二位玩家获胜，只需将$n$设置为$k\%(n+1)=0$即可   
     \end{itemize}
 \end{frame}
