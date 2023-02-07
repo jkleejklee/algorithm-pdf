@@ -1,28 +1,28 @@
-\documentclass{beamer}
-\usepackage{tikz,tikz-3dplot}
-\usetheme{focus}
-\definecolor{background}{RGB}{239, 239, 239}
 
+\input{pre}
 \begin{document}
+\usetikzlibrary {mindmap,shadows}
 
-\usetikzlibrary{fit}
-\begin{tikzpicture}[he/.style={draw, dashed, rounded corners}]
-\foreach \y in {0,1,2,3}{
-\foreach \x in {0,1,2}{
-    \node at (3*\x,\y) {A};
-    \node at (3*\x+1,\y) {B};}
-    \node at (2,\y) {C};
-    \node at (8,\y) {D};}
-\foreach \i in {0,1}{
-    \node at (-1,2*\i+1) {S:};
-    \node at (-1,2*\i) {P:};
-    \node[rectangle, fill=background, minimum width=3cm, minimum height=1cm] at (6*\i+1,2*\i){};}
-\node (1) at (5,3) {C};
-\node (2) at (5,2) {D};
-\node (3) at (5,1) {C};
-\node (4) at (5,0) {C};
-\node [he, fit=(1) (2)] {};
-\node [he, fit=(3) (4)] {};
+\begin{tikzpicture}[mindmap,every annotation/.style={fill=white}]
+
+\def\lecture#1#2#3#4#5#6{
+\node [annotation, #3, scale=0.65, text width=4cm, inner sep=2mm] at (#4) {
+Lecture #1: \textcolor{orange}{\textbf{#2}}
+\list{--}{\topsep=2pt\itemsep=0pt\parsep=0pt
+\parskip=0pt\labelwidth=8pt\leftmargin=8pt
+\itemindent=0pt\labelsep=2pt}
+#5
+\endlist
+};
+}
+
+\clip (-5,-5) rectangle ++ (4,5);
+
+\lecture{1}{Computational Problems}{above,xshift=-3mm}
+{Computational Problems.north}{
+\item Knowledge of several key problems
+\item Knowledge of problem encodings
+\item Being able to formalize problems
+}{2009-04-08}
 \end{tikzpicture}
-
 \end{document}

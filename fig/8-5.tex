@@ -1,0 +1,11 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}
+    \node[circle,minimum size=30pt,draw] (1) at(0,0){1};
+    \node[circle,minimum size=30pt,draw] (2) at(2,0){2}
+        edge node[auto,swap]{3}(1);
+    \node[circle,minimum size=30pt,draw] (3) at(4,0){3}
+        edge node[auto,swap]{5}(2)
+        edge[bend right=45]node[auto,swap]{4}(1);
+\end{tikzpicture}
+\end{document}

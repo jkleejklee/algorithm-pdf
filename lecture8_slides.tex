@@ -29,40 +29,7 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{计算过程}
-    \begin{tikzpicture}
-        \node[CC1] (3) at(0,0){3};
-        \node[CC1] (4) at(2,0){4};
-        \node[CC1] (7) at(4,0){3};
-        \node[CC1] (8) at(6,0){4};
-        \node[CC1] (11) at(8,0){3};
-        \node[CC1] (12) at(10,0){4};
-        \node[CC1] (1) at(0,2){1};
-        \node[CC1] (2) at(2,2){2};
-        \node[CC1] (5) at(4,2){1};
-        \node[CC1] (6) at(6,2){2};
-        \node[CC1] (9) at(8,2){1};
-        \node[CC1] (10) at(10,2){2};
-        \draw [very thick,blue](1) --(2) node[NU]{4};
-        \draw (1) --(3) node[NU]{9};
-        \draw (1) --(4) node[NU]{21};
-        \draw (2) --(3) node[SU]{8};
-        \draw (2) --(4) node[NU]{17};
-        \draw (3) --(4) node[NU]{16};
-        \draw [very thick,blue](5) --(6) node[NU]{4};
-        \draw (5) --(7) node[NU]{9};
-        \draw (5) --(8) node[NU]{21};
-        \draw [very thick,blue](6) --(7) node[SU]{8};
-        \draw (6) --(8) node[NU]{17};
-        \draw (7) --(8) node[NU]{16};
-        \draw [very thick,blue](9) --(10) node[NU]{4};
-        \draw (9) --(11) node[NU]{9};
-        \draw (9) --(12) node[NU]{21};
-        \draw [very thick,blue](10) --(11) node[SU]{8};
-        \draw (10) --(12) node[NU]{17};
-        \draw [very thick,blue](11) --(12) node[NU]{16};
-        \draw[->,very thick] (2.7,1)--(3.3,1);
-        \draw[->,very thick] (6.7,1)--(7.3,1);
-    \end{tikzpicture}
+    \includegraphics{fig/8-1.pdf}
 \begin{enumerate}[(1)]
     \item 将顶点1加入生成树，设vis[1]=1，边\{4,2\},\{9,3\},\{21,4\}插入最小堆\pause
     \item 取出边\{4,2\}，因为vis[2]=0，将2加入生成树，设vis[2]=1，累计距离等于4，边\{4,1\},\{8,3\},\{17,4\}插入最小堆\pause
@@ -84,40 +51,7 @@
     \end{itemize}
 \end{frame}    
 \begin{frame}{计算过程}
-    \begin{tikzpicture}
-        \node[CC1] (3) at(0,0){3};
-        \node[CC1] (4) at(2,0){4};
-        \node[CC1] (7) at(4,0){3};
-        \node[CC1] (8) at(6,0){4};
-        \node[CC1] (11) at(8,0){3};
-        \node[CC1] (12) at(10,0){4};
-        \node[CC1] (1) at(0,2){1};
-        \node[CC1] (2) at(2,2){2};
-        \node[CC1] (5) at(4,2){1};
-        \node[CC1] (6) at(6,2){2};
-        \node[CC1] (9) at(8,2){1};
-        \node[CC1] (10) at(10,2){2};
-        \draw [very thick,blue](1) --(2) node[NU]{4};
-        \draw (1) --(3) node[NU]{9};
-        \draw (1) --(4) node[NU]{21};
-        \draw (2) --(3) node[SU]{8};
-        \draw (2) --(4) node[NU]{17};
-        \draw (3) --(4) node[NU]{16};
-        \draw [very thick,blue](5) --(6) node[NU]{4};
-        \draw (5) --(7) node[NU]{9};
-        \draw (5) --(8) node[NU]{21};
-        \draw [very thick,blue](6) --(7) node[SU]{8};
-        \draw (6) --(8) node[NU]{17};
-        \draw (7) --(8) node[NU]{16};
-        \draw [very thick,blue](9) --(10) node[NU]{4};
-        \draw (9) --(11) node[NU]{9};
-        \draw (9) --(12) node[NU]{21};
-        \draw [very thick,blue](10) --(11) node[SU]{8};
-        \draw (10) --(12) node[NU]{17};
-        \draw [very thick,blue](11) --(12) node[NU]{16};
-        \draw[->,very thick] (2.7,1)--(3.3,1);
-        \draw[->,very thick] (6.7,1)--(7.3,1);
-    \end{tikzpicture}
+    \includegraphics{fig/8-1.pdf}
 \begin{enumerate}[(1)]
     \item 取\{1,2,4\}，没有环路，将\{1,2,4\}放入生成树\pause
     \item 取\{2,3,8\}，没有环路，将\{2,3,8\}放入生成树\pause
@@ -190,28 +124,10 @@
         \item 计算根据已知信息选择其中一个经纪人作为起点，使谣言传给每个人，到最后一个人的时间最短
         \item 如图所示，选择3，最后收到谣言的人为4，时间是10
     \end{itemize}
-    \begin{center}
-        \begin{tikzpicture}
-        \node[CC1] (5) at(6,0){5};
-        \node[CC1] (4) at(0,0){4};
-        \node[CC1,fill=blue!20] (3) at(2,0){3}
-            edge[->]node[auto,swap] {10}(4)
-            edge[->,bend right=60]node[auto,swap] {2}(5);
-        \node[CC1] (2) at(4,0){2}
-            edge[<-]node[auto,swap] {7}(3)
-            edge[->]node[auto] {8}(5)
-            edge[<-,bend right]node[auto,swap] {5}(5);
-        \node[CC1] (1) at(3,2){1}
-            edge[->]node[auto,swap] {8}(2)
-            edge[->]node[auto,swap] {6}(3)
-            edge[->]node[auto,swap] {4} (4)
-            edge[->]node[auto] {3}(5)
-            edge[<-,bend left]node[auto] {5}(5);
-    \end{tikzpicture}
-    \end{center}
+    \includegraphics[center]{fig/8-2.pdf}
 \end{frame}
 \begin{frame}{计算过程}
-    \includegraphics[width=0.9\textwidth,center]{fig/8-3.png}
+    \includegraphics[scale=0.5,center]{fig/8-3.pdf}
     \begin{itemize}
         \item 上图显示了Floyd算法计算过程中的数组情况
         \begin{itemize}
@@ -231,44 +147,38 @@
 \begin{frame}{1511 -- Invitation Cards (poj.org)}
     \begin{itemize}
         \item $p$个公交站点，$q$条公交线路，从$u$站点到$v$站点，价格为$w$。$p$个志愿者从1号站点出发到每个站点，再返回到1号站点，求花费的总值最少是多少
+        \vfill
         \item 处理一个点之后，将该点连接的路径放入队列，存储图信息的数据结构应该方便这个操作，可以使用\textcolor{blue}{邻接表}(Adjacency list)来实现，这里采用数组来模拟链表实现的邻接表(被称为\textcolor{blue}{链式前向星})\footnote{\url{https://malash.me/200910/linked-forward-star/}}
 \end{itemize}
+\end{frame}
+\begin{frame}{链式前向星}
+\begin{exampleblock}{Example}
 \begin{columns}   
-    \column{0.4\textwidth}
-        \begin{table}
-            \scriptsize{
-            \begin{tabular}{ccc}
-                p  & q    \\\hline
-                4  & 6    \\\hline
-                u  & v  &  w   \\\hline
-                1  & 2  & 10   \\\hline
-                2  & 1  & 60   \\\hline
-                1  & 3  & 20   \\\hline
-                3  & 4  & 10   \\\hline
-                2  & 4  & 5    \\\hline
-                4  & 1  & 50   \\\hline
-            \end{tabular}
-            }
-        \end{table}
-        \column{0.6\textwidth}
-        \includegraphics[width=0.6\textwidth]{fig/8-4.png}
+\column{0.3\textwidth}
+\begin{table}
+    \begin{tabular}{ccc}
+        p  & q    \\\hline
+        4  & 6    \\\hline
+        u  & v  &  w   \\\hline
+        1  & 2  & 10   \\\hline
+        2  & 1  & 60   \\\hline
+        1  & 3  & 20   \\\hline
+        3  & 4  & 10   \\\hline
+        2  & 4  & 5    \\\hline
+        4  & 1  & 50   \\\hline
+    \end{tabular}
+\end{table}
+\column{0.7\textwidth}
+\includegraphics[scale=0.7]{fig/8-4.pdf}
 \end{columns}
+\end{exampleblock}
 \end{frame}
 \begin{frame}{1797 -- Heavy Transportation (poj.org)}
     \begin{itemize}
         \item $m$条街道有$n$个交点，交点编号从$1$到$n$，每条街道有重量限制$w$。从1号城市向$n$号城市运送起重机，选择一条路径，使得路径上的每条街道允许的重量$w$的最大值最大
         \item 如图，选择1-2-3，由于1-2允许的最大载重量为3，所以整条路线上允许的最大值是3；选择1-3，允许的最大值为4。最终结果为4
     \end{itemize}
-    \begin{center}
-        \begin{tikzpicture}
-            \node[CC1] (1) at(0,0){1};
-            \node[CC1] (2) at(2,0){2}
-                edge node[auto,swap]{3}(1);
-            \node[CC1] (3) at(4,0){3}
-                edge node[auto,swap]{5}(2)
-                edge[bend right=45]node[auto,swap]{4}(1);
-        \end{tikzpicture}
-    \end{center}
+    \includegraphics[center]{fig/8-5.pdf}
 \end{frame}
 \begin{frame}{Dijkstra算法}
     \begin{itemize}
@@ -298,7 +208,7 @@
         \item 图中每个节点的两个数字分别是执行了Tarjan算法后的dfn值和low值，该图最终被划分出了4个强连通分量
     \end{itemize}
     \vfill
-    \includegraphics[width=0.5\textwidth,center]{fig/8-6.png}
+    \includegraphics[width=0.5\textwidth,center]{fig/tarjan.png}
     \scriptsize{
     \begin{enumerate}[(1)]
         \item 从图中一点$u$出发，对图进行深度优先搜索，用dfn[u]记录节点u在深度优先搜索中访问的次序编号，low[u]记录$u$或$u$的子树能够追溯到的最早的栈中节点的次序编号。将$u$放入堆栈，搜索$u$的相连点$v$，如果$v$未被访问，则递归访问$v$；如果$v$已经在堆栈中，则检查dfn[v]是否小于low[u]，如果是，就更新low[u]的值为dfn[v]
@@ -319,28 +229,8 @@
 \begin{frame}{1144 -- Network (poj.org)}
     \begin{itemize}
         \item 电话网络有$n$个连接点$1$到$n$，每个连接点有一个交换机，两个交换机之间的路线双向的。如果交换机停机会造成某些点不能连通，这个交换机称为关键节点，求所有关键节点的数量
-        \begin{exampleblock}{例}
-            \begin{center}
-                \begin{tikzpicture}
-                    [every node/.style={circle,minimum width=20pt,minimum height=20pt,thick,draw},
-                    edge/.style={thick,draw},global scale=0.7]
-                \node(1) at(0,2){1};
-                \node(2) at(2,2){2};
-                \node(3) at(2,0){3};
-                \node(4) at(0,0){4};
-                \node(5) at(1,1){5}
-                    edge (1) edge (2) edge (3) edge (4);
-                \node(6) at(4,2){1};
-                \node(8) at(8,2){3};
-                \node(7) at(6,2){2}
-                    edge (6) edge (8);
-                \node(9) at(4,0){6};
-                \node(11) at(8,0){4};
-                \node(10) at(6,0){5}
-                    edge (7) edge (11) edge (9);
-                \end{tikzpicture}\\
-                (a)关键节点为5;(b)关键节点为2、5
-            \end{center}
+        \begin{exampleblock}{例(红色为关键节点)}
+            \includegraphics[scale=.8,center]{fig/8-6.pdf}
         \end{exampleblock}
         \item 在无向的连通图中，删除一点后使图不再连通，这点就被称为\textcolor{blue}{割点}(vertex separator/vertex cut)
         \item 与割点类似，如果删除一条边使图不再连通，这条边被称为\textcolor{blue}{桥}(Bridge)

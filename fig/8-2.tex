@@ -1,0 +1,20 @@
+\input{pre}
+\begin{document}
+\begin{tikzpicture}[nod/.style={circle,minimum size=30pt,draw}]
+    \node[nod] (5) at(6,0){5};
+    \node[nod] (4) at(0,0){4};
+    \node[nod,fill=blue!20] (3) at(2,0){3}
+        edge[->]node[auto,swap] {10}(4)
+        edge[->,bend right=60]node[auto,swap] {2}(5);
+    \node[nod] (2) at(4,0){2}
+        edge[<-]node[auto,swap] {7}(3)
+        edge[->]node[auto] {8}(5)
+        edge[<-,bend right]node[auto,swap] {5}(5);
+    \node[nod] (1) at(3,2){1}
+        edge[->]node[auto,swap] {8}(2)
+        edge[->]node[auto,swap] {6}(3)
+        edge[->]node[auto,swap] {4} (4)
+        edge[->]node[auto] {3}(5)
+        edge[<-,bend left]node[auto] {5}(5);
+\end{tikzpicture}
+\end{document}
