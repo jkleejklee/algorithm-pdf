@@ -3,15 +3,13 @@
 \begin{document}
 \frame{\titlepage}
 \section{7. 搜索算法}
-\begin{frame}{搜索问题}
-    \begin{block}{搜索算法}
-        利用计算机的高性能来有目的地穷举一个问题的部分或所有的可能情况，从而求出问题的解的一种方法
-    \end{block}
+\begin{frame}{搜索算法}
     \begin{itemize}
+        \item 利用计算机的高性能来有目的地穷举一个问题的部分或所有的可能情况，从而求出问题的解的一种方法
         \item 搜索过程实际上是根据初始条件$S_0$和扩展规则构造一棵解答树并寻找符合目标状态$S_g$的节点的过程
         \item \textcolor{blue}{决策树}是机器学习和数据挖掘中一个重要方法
     \end{itemize}
-    \includegraphics[width=0.3\textwidth,center]{fig/7-1.pdf}
+    \includegraphics[width=0.4\textwidth,center]{fig/7-1.pdf}
 \end{frame}
 \begin{frame}{搜索算法分类}
     \includegraphics[width=\textwidth]{fig/7-2.pdf}
@@ -33,11 +31,11 @@
         \item Please help him and design a program which computes the smallest possible original length of those sticks
         \item All lengths expressed in units are integers greater than zero
     \end{itemize}
-    \begin{exampleblock}{例}
+    \begin{exampleblock}{Example}
         \begin{itemize}
-            \item 输入：5,2,1,5,2,1,5,2,1
-            \item 输出：6
-            \item 可能情况：24(5+5+5+2+2+2+1+1+1) 12(5+5+2,5+2+2+1+1+1) 8(5+2+1,5+2+1,5+2+1) 6(5+1,5+1,5+1,2+2+2)
+            \item Sample Input:5,2,1,5,2,1,5,2,1
+            \item Sample Output:6
+            \item 24(5+5+5+2+2+2+1+1+1) 12(5+5+2,5+2+2+1+1+1) 8(5+2+1,5+2+1,5+2+1) \textcolor{blue}{6(5+1,5+1,5+1,2+2+2)}
         \end{itemize}
     \end{exampleblock}
 \end{frame}    
@@ -112,8 +110,15 @@
         \item 现在第二个取纽扣的玩家来决定$n$是多少，要求$2 \leq n < k$
         \item 问为了保证第二个玩家获胜，$n$的值最小是多少，如果找不到，$n$就为0
     \end{itemize}
-    \begin{exampleblock}{例}
-        3个纽扣，令$n=2$，则第一位玩家取1，第二位玩家取2；而第一位玩家取2，第二位玩家取1，第二位玩家都可以获胜
+    \begin{exampleblock}{Example}
+        \begin{itemize}
+            \item 3个纽扣，令$n=2$
+            \begin{itemize}
+                \item 第一位玩家取1，第二位玩家取2
+                \item 第一位玩家取2，第二位玩家取1
+            \end{itemize}
+            \item 第二位玩家都可以获胜
+        \end{itemize}
     \end{exampleblock}
 \end{frame}
 \begin{frame}{取子游戏}
@@ -126,7 +131,6 @@
         \end{enumerate}
         \item $n=3$时,按照算法，0为结束点，是必败点(P)；1,2,3可以分别通过取1,2,3个纽扣到达0的位置，所以它们是必胜点(N)
         \item $n=4$时,无论取几个纽扣，到达的都是N点，所以4为必败点，依此类推，如图所示
-        \vfill
         \includegraphics[scale=.9]{fig/7-4.pdf}
         \item 不难发现，凡是$n+1$整数倍的位置都是P点，其他位置是N点,第二位玩家获胜，只需将$n$设置为$k\%(n+1)=0$即可   
     \end{itemize}

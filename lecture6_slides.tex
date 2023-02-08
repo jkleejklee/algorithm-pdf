@@ -93,14 +93,14 @@
 \begin{frame}{6.2 线段树}
     \begin{itemize}
         \item \textcolor{blue}{线段树}(Segment tree) 使用二叉树的结构，每个节点表示一个包含起点和终点的区间，也可以看成是一个线段
-        \vfill
         \item 线段树对区间信息进行存储，可以实现一些与区间计算有关的操作，例如区间最值问题、区间求和问题等，计算几何里面扫描线的操作也可以用线段树实现
-        \vfill
         \item 由于线段树消耗大量存储空间，熟练掌握离散化处理方法十分重要
         \begin{block}{“在线” 与“离线”}
-            \scriptsize{
-                \quad 在程序设计过程中，如果开始时不需要知道所有输入，而是以序列的方式依次处理问题的算法，随着查询操作，数据也在实时变化，也称为“在线”查询，相应的算法称为\textcolor{blue}{在线算法}，例如插入排序算法、贪心算法等\\
-                \quad 相对的，开始时就需要知道问题的所有数据，每次查询操作时的数据保持不变，称为“离线”查询，相应的算法称为\textcolor{blue}{离线算法}。基于线段树的区间查询算法是离线查询，在多次查询的问题中能够提高效率}
+            \small{
+                \begin{itemize}
+                    \item 在程序设计过程中，如果开始时不需要知道所有输入，而是以序列的方式依次处理问题的算法，随着查询操作，数据也在实时变化，也称为“在线”查询，相应的算法称为\textcolor{blue}{在线算法}，例如插入排序算法、贪心算法等
+                    \item 相对的，开始时就需要知道问题的所有数据，每次查询操作时的数据保持不变，称为“离线”查询，相应的算法称为\textcolor{blue}{离线算法}。基于线段树的区间查询算法是离线查询，在多次查询的问题中能够提高效率
+                \end{itemize}}
         \end{block}
     \end{itemize}
 \end{frame}
@@ -123,12 +123,9 @@
     \begin{itemize}
         \item \textcolor{blue}{树状数组}也称\textcolor{blue}{二元索引树}(Binary Indexed Tree)或\textcolor{blue}{Fenwick树}, 树状数组非常适合区间累计的计数与求和，尤其是多组查询，代码效率很高
         \item 与线段树相比，线段树可实现的功能更多，凡是树状数组能解决的问题，线段树同样可以解决
-        \item 树状数组用一维数组C实现，每个元素代表不同区间（图中矩形横向范围）
-        \begin{itemize}
-            \item C[1]:[1-1],C[2]:[1-2],C[3]:[3-3],C[4]:[1-4],C[5]:[5-5],C[6]:[5-6],...
-        \end{itemize}
+        \item 树状数组用一维数组C实现，每个元素代表不同区间(图中矩形横向范围):C[1]:[1-1],C[2]:[1-2],C[3]:[3-3],C[4]:[1-4],...
     \end{itemize}
-    \includegraphics[scale=.7,center]{fig/6-4.pdf}
+    \includegraphics[scale=.8,center]{fig/6-4.pdf}
 \end{frame}
 \begin{frame}{树状数组}
     \begin{itemize}
@@ -181,15 +178,13 @@
     \end{itemize}
 \end{frame}
 \begin{frame}{2352 -- Stars (poj.org)}
-    \begin{itemize}
-        \item  给出$n$个星星的坐标$(x,y)$，按$y$递增，$y$相等$x$递增的次序
-        \item 一颗星星的level定义为所有$x$和$y$均不大于该星星坐标的星星的总数，如图所示，编号1…5的星星的level分别为0,1,2,1,3
-        \item 依次输出level为0…n-1的星星个数，level为0的有1个，level为1的有2个，依次类推，所以输出1,2,1,1,0
-    \end{itemize}
+\begin{itemize}
+    \item  给出$n$个星星的坐标$(x,y)$，按$y$递增，$y$相等$x$递增的次序
+    \item 一颗星星的level定义为所有$x$和$y$均不大于该星星坐标的星星的总数，如图所示，编号1…5的星星的level分别为0,1,2,1,3
+    \item 依次输出level为0…n-1的星星个数，level为0的有1个，level为1的有2个，依次类推，所以输出1,2,1,1,0
     \includegraphics[scale=.6,center]{fig/6-5.pdf}
-    \begin{itemize}
-        \item  本题中给出的星星坐标已经将$y$递增排序，统计每个星星$x$坐标之前有多少个星星即可，也就是每输入一个星星的坐标，level值就是[1…x-1]的累计值
-    \end{itemize}
+    \item  本题中给出的星星坐标已经将$y$递增排序，统计每个星星$x$坐标之前有多少个星星即可，也就是每输入一个星星的坐标，level值就是[1…x-1]的累计值
+\end{itemize}
 \end{frame}
 \begin{frame}{6.4 二叉搜索树}
     \begin{itemize}
@@ -220,7 +215,7 @@
     \end{itemize}
     \vfill
     \begin{block}{树堆(Treap)}
-        通过添加一个随机值$r$来解决二叉搜索树不平衡问题，树堆根据$r$值，保持树的节点的层次位置按$r$值单调排列，因为$r$是随机的，树的节点就会保证基本的平衡，$r$值各不相等的情况下，生成的树是唯一的
+        \quad 通过添加一个随机值$r$来解决二叉搜索树不平衡问题，树堆根据$r$值，保持树的节点的层次位置按$r$值单调排列，因为$r$是随机的，树的节点就会保证基本的平衡，$r$值各不相等的情况下，生成的树是唯一的
     \end{block}
 \end{frame}
 \begin{frame}{树堆}

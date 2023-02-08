@@ -18,11 +18,11 @@
         \includegraphics[center]{fig/5-1.pdf}
     \end{itemize}
     \begin{block}{模拟退火法(SA,Simulated annealing)}
-        \quad 一种通用概率算法，通过模拟金属退火的过程，在一定时间内寻找在一个很大搜寻空间中的近似最优解
+        \begin{itemize}
+            \item 一种通用概率算法，通过模拟金属退火的过程，在一定时间内寻找在一个很大搜寻空间中的近似最优解
+            \item 选取开始点，进行多轮迭代，每次在当前状态附近随机生成解空间，在解空间中选择最优的进行下一轮迭代，最终使得结果收敛到最优解附近结束
+        \end{itemize}
     \end{block}
-    \begin{itemize}
-        \item 选取开始点，进行多轮迭代，每次在当前状态附近随机生成解空间，在解空间中选择最优的进行下一轮迭代，最终使得结果收敛到最优解附近结束
-    \end{itemize}
 \end{frame}
 \begin{frame}{5.2 区间覆盖问题}
     \begin{itemize}
@@ -43,7 +43,7 @@
         \item The intervals of this representation should be written in the output file in acceding order. We say that the intervals $[a; b]$ and $[c; d]$ are in ascending order if, and only if $a \leq b < c \leq d$.
     \end{itemize}
 \end{frame}    
-\begin{frame}{分析}
+\begin{frame}{样例}
     \begin{columns}
         \column{0.3\textwidth}
             \begin{table}

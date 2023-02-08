@@ -73,14 +73,13 @@
         \end{itemize}
     \end{itemize}
     \begin{table}
-        \scriptsize{
-        \begin{tabular}{l|l|l}
-            \textbf{算法} & \textbf{代码中采用的数据结构} & \textbf{时间复杂度($V$:点数;$E$:边数)}\\\hline
+        \begin{tabular}{m{2.4cm}|m{3.7cm}|m{4cm}}
+            \textbf{算法} & \textbf{采用的数据结构} & \textbf{时间复杂度 \newline ($V$:点数;$E$:边数)}\\\hline
 			Floyd        & 邻接矩阵                 & $O(V^3)$    \\\hline
 			Bellman-Ford & 邻接表                   & $O(VE)$     \\\hline
 			SPFA         & 链式前向星               & 平均$O(2E)$，最差$O(VE)$  \\\hline
-			Dijkstra     & 邻接矩阵、链式前向星     & $O(V^2)$，可进一步优化   \\\hline
-        \end{tabular}}
+			Dijkstra     & 邻接矩阵/链式前向星     & $O(V^2)$，可进一步优化   \\\hline
+        \end{tabular}
     \end{table}
 \end{frame}
 \begin{frame}{分类总结}
@@ -229,7 +228,7 @@
 \begin{frame}{1144 -- Network (poj.org)}
     \begin{itemize}
         \item 电话网络有$n$个连接点$1$到$n$，每个连接点有一个交换机，两个交换机之间的路线双向的。如果交换机停机会造成某些点不能连通，这个交换机称为关键节点，求所有关键节点的数量
-        \begin{exampleblock}{例(红色为关键节点)}
+        \begin{exampleblock}{Example:(红色为关键节点)}
             \includegraphics[scale=.8,center]{fig/8-6.pdf}
         \end{exampleblock}
         \item 在无向的连通图中，删除一点后使图不再连通，这点就被称为\textcolor{blue}{割点}(vertex separator/vertex cut)
